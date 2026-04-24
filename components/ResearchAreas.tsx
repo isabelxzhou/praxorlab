@@ -1,162 +1,201 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-
-function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0.5);
-  const y = useMotionValue(0.5);
-
-  const rotateX = useSpring(useTransform(y, [0, 1], [4, -4]), { stiffness: 300, damping: 30 });
-  const rotateY = useSpring(useTransform(x, [0, 1], [-4, 4]), { stiffness: 300, damping: 30 });
-  const glowX = useSpring(useTransform(x, [0, 1], [0, 100]), { stiffness: 300, damping: 30 });
-  const glowY = useSpring(useTransform(y, [0, 1], [0, 100]), { stiffness: 300, damping: 30 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width);
-    y.set((e.clientY - rect.top) / rect.height);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0.5);
-    y.set(0.5);
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformPerspective: 1000,
-      }}
-      className={className}
-    >
-      <motion.div
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{
-          background: useTransform(
-            [glowX, glowY],
-            ([gx, gy]) =>
-              `radial-gradient(circle at ${gx}% ${gy}%, rgba(0, 212, 255, 0.06) 0%, transparent 60%)`
-          ),
-        }}
-      />
-      {children}
-    </motion.div>
-  );
-}
 
 const areas = [
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-10 h-10">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
+    code: "R-01",
+    title: "AI Agents",
+    tone: "var(--cat-agents)",
+    toneTint: "var(--cat-agents-tint)",
+    description:
+      "Autonomous systems that reason, plan, and act. We research multi-agent architectures, tool-using agents, agent-to-agent protocols, and emergent swarm behaviors that push far beyond simple chatbots.",
+    tags: ["Multi-Agent Systems", "Tool Use", "Autonomy", "Swarm Intelligence"],
+    glyph: (
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1" className="h-8 w-8">
+        <circle cx="20" cy="20" r="2.5" />
+        <circle cx="20" cy="7" r="1.5" />
+        <circle cx="20" cy="33" r="1.5" />
+        <circle cx="7" cy="20" r="1.5" />
+        <circle cx="33" cy="20" r="1.5" />
+        <line x1="20" y1="9" x2="20" y2="17.5" />
+        <line x1="20" y1="22.5" x2="20" y2="31" />
+        <line x1="9" y1="20" x2="17.5" y2="20" />
+        <line x1="22.5" y1="20" x2="31" y2="20" />
+        {/* orbit dot — travels the outer ring on hover */}
+        <motion.g
+          variants={{
+            rest:  { opacity: 0 },
+            hover: { opacity: 1, rotate: 360 },
+          }}
+          transition={{
+            opacity: { duration: 0.2 },
+            rotate:  { duration: 4, repeat: Infinity, ease: "linear" },
+          }}
+          style={{ transformOrigin: "20px 20px" }}
+        >
+          <circle cx="33" cy="20" r="1.4" fill="currentColor" />
+        </motion.g>
       </svg>
     ),
-    title: "AI Agents",
-    description:
-      "Autonomous systems that reason, plan, and act. We research multi-agent architectures, tool-using agents, agent-to-agent communication protocols, and emergent swarm behaviors that push far beyond simple chatbots.",
-    tags: ["Multi-Agent Systems", "Tool Use", "Autonomy", "Swarm Intelligence"],
-    color: "from-cyan-400/20 to-cyan-400/0",
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-10 h-10">
-        <circle cx="12" cy="12" r="3" />
-        <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" strokeLinecap="round" />
-      </svg>
-    ),
+    code: "R-02",
     title: "Alternative Neural Architectures",
+    tone: "var(--cat-architectures)",
+    toneTint: "var(--cat-architectures-tint)",
     description:
       "The transformer isn't the end of the story. We explore liquid neural networks, state-space models, spiking neural nets, neuromorphic computing, and entirely novel computational substrates for intelligence.",
     tags: ["Liquid Networks", "SSMs", "Neuromorphic", "Spiking NNs"],
-    color: "from-purple-400/20 to-purple-400/0",
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-10 h-10">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-        <path d="M2 12h20" />
+    glyph: (
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1" className="h-8 w-8">
+        <motion.path
+          d="M4 20 C 10 6, 14 6, 20 20 S 30 34, 36 20"
+          variants={{
+            rest:  { pathLength: 1 },
+            hover: { pathLength: [0, 1, 1], opacity: [0.4, 1, 1] },
+          }}
+          transition={{ duration: 1.6, ease: "easeInOut", repeat: Infinity }}
+        />
+        <circle cx="4" cy="20" r="1.5" fill="currentColor" />
+        <circle cx="20" cy="20" r="1.5" fill="currentColor" />
+        <circle cx="36" cy="20" r="1.5" fill="currentColor" />
       </svg>
     ),
+  },
+  {
+    code: "R-03",
     title: "Quantum AI",
+    tone: "var(--cat-quantum)",
+    toneTint: "var(--cat-quantum-tint)",
     description:
       "Harnessing quantum computation for machine learning. We investigate quantum neural networks, variational quantum circuits, quantum advantage in optimization, and hybrid quantum-classical architectures.",
     tags: ["QML", "Variational Circuits", "Hybrid Systems", "Quantum Advantage"],
-    color: "from-blue-400/20 to-blue-400/0",
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-10 h-10">
-        <path d="M9.663 17h4.674M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" strokeLinecap="round" strokeLinejoin="round" />
+    glyph: (
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1" className="h-8 w-8">
+        <circle cx="20" cy="20" r="4" />
+        <motion.ellipse
+          cx="20" cy="20" rx="14" ry="5"
+          variants={{ rest: { rotate: 30 }, hover: { rotate: 30 + 360 } }}
+          transition={{ duration: 7, ease: "linear", repeat: Infinity }}
+          style={{ transformOrigin: "20px 20px" }}
+        />
+        <motion.ellipse
+          cx="20" cy="20" rx="14" ry="5"
+          variants={{ rest: { rotate: -30 }, hover: { rotate: -30 - 360 } }}
+          transition={{ duration: 9, ease: "linear", repeat: Infinity }}
+          style={{ transformOrigin: "20px 20px" }}
+        />
       </svg>
     ),
+  },
+  {
+    code: "R-04",
     title: "Experimental AI",
+    tone: "var(--cat-experimental)",
+    toneTint: "var(--cat-experimental-tint)",
     description:
       "The frontier of what nobody else is trying. Novel training paradigms, emergent capability research, cross-domain transfer, AI safety experiments, and unconventional approaches to artificial general intelligence.",
     tags: ["Emergence", "Novel Training", "AGI Research", "AI Safety"],
-    color: "from-emerald-400/20 to-emerald-400/0",
+    glyph: (
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1" className="h-8 w-8">
+        <rect x="10" y="10" width="20" height="20" />
+        <motion.rect
+          x="14" y="14" width="12" height="12"
+          variants={{ rest: { rotate: 45 }, hover: { rotate: 45 + 360 } }}
+          transition={{ duration: 8, ease: "linear", repeat: Infinity }}
+          style={{ transformOrigin: "20px 20px" }}
+        />
+      </svg>
+    ),
   },
 ];
 
 export default function ResearchAreas() {
   return (
-    <section id="research" className="relative py-40 overflow-hidden">
-      <div className="orb orb-purple w-[600px] h-[600px] top-[20%] -right-[200px] animate-float-slow opacity-20" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="research" className="relative border-t border-rule-subtle overflow-hidden">
+      <div className="mx-auto max-w-[min(1400px,94vw)] px-6 py-24 lg:px-10 lg:py-32">
         <ScrollReveal>
-          <div className="max-w-3xl mb-20">
-            <p className="text-xs font-mono text-cyan-400/80 tracking-[0.25em] uppercase mb-6">
-              Research Areas
-            </p>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight tracking-[-0.03em] leading-[1.05] mb-6">
-              What we <span className="gradient-text font-light">explore</span>
-            </h2>
-            <p className="text-base text-zinc-500 leading-[1.9] max-w-2xl">
-              Our research spans the most ambitious frontiers of AI — the spaces
-              where conventional wisdom ends and real discovery begins.
-            </p>
+          <div className="flex items-center gap-3 mb-12">
+            <span className="sig text-signal">§02</span>
+            <span className="h-px flex-1 bg-rule-subtle" />
+            <span className="label-mono">Research Areas</span>
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-5">
-          {areas.map((area, i) => (
-            <ScrollReveal key={i} delay={i * 0.1}>
-              <TiltCard className="relative glass-card rounded-2xl p-8 lg:p-10 h-full group cursor-default">
-                {/* Top gradient line */}
-                <div className={`absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r ${area.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+        <div className="grid gap-12 lg:grid-cols-12">
+          <ScrollReveal className="lg:col-span-7" delay={0.08}>
+            <h2 className="display text-[clamp(1.3rem,2.2vw,1.85rem)] text-ink">
+              What we explore.
+            </h2>
+            <p className="mt-6 max-w-[62ch] text-[15px] leading-[1.75] text-ink-muted">
+              Our research spans the most ambitious frontiers of AI — the
+              spaces where conventional wisdom ends and real discovery
+              begins. Each track is led by a working researcher and scoped
+              to a publishable output.
+            </p>
+          </ScrollReveal>
+        </div>
 
-                <div className="relative z-10">
-                  <div className="text-cyan-400/70 mb-6 group-hover:text-cyan-300 transition-colors duration-300">
-                    {area.icon}
-                  </div>
-                  <h3 className="text-lg font-medium mb-3 text-zinc-100 group-hover:text-white transition-colors duration-300">
-                    {area.title}
-                  </h3>
-                  <p className="text-sm text-zinc-500 leading-[1.8] mb-6">
-                    {area.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {area.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1.5 text-[11px] font-mono text-zinc-500 border border-white/[0.04] rounded-full bg-white/[0.01] group-hover:border-white/[0.08] transition-colors duration-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+        <div className="mt-16 grid gap-px bg-rule-subtle border border-rule-subtle md:grid-cols-2">
+          {areas.map((area, i) => (
+            <ScrollReveal key={area.code} delay={i * 0.08}>
+              <motion.article
+                initial="rest"
+                whileHover="hover"
+                animate="rest"
+                className="group relative flex h-full flex-col gap-6 bg-bg p-8 transition-colors duration-300 lg:p-10"
+                style={{ ["--tone" as string]: area.tone, ["--tone-tint" as string]: area.toneTint }}
+              >
+                <span
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ background: "var(--tone-tint)" }}
+                  aria-hidden="true"
+                />
+
+                <div className="relative flex items-center justify-between">
+                  <span className="sig flex items-center gap-2 text-ink-dim">
+                    <span
+                      className="inline-block h-1.5 w-1.5 rounded-full"
+                      style={{ background: "var(--tone)" }}
+                      aria-hidden="true"
+                    />
+                    <span
+                      className="transition-colors"
+                      style={{ color: "var(--tone)" }}
+                    >
+                      {area.code}
+                    </span>
+                  </span>
+                  <div
+                    className="text-ink-muted transition-colors group-hover:[color:var(--tone)]"
+                  >
+                    {area.glyph}
                   </div>
                 </div>
-              </TiltCard>
+
+                <h3 className="relative text-[15px] font-medium tracking-[-0.01em] text-ink lg:text-[17px]">
+                  {area.title}
+                </h3>
+
+                <p className="relative max-w-[54ch] text-[14px] leading-[1.75] text-ink-muted">
+                  {area.description}
+                </p>
+
+                <div className="relative mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-4 border-t border-rule-subtle">
+                  {area.tags.map((tag) => (
+                    <span key={tag} className="sig inline-flex items-center gap-2 text-ink-dim">
+                      <span
+                        className="inline-block h-[3px] w-[3px] rounded-full opacity-70"
+                        style={{ background: "var(--tone)" }}
+                        aria-hidden="true"
+                      />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.article>
             </ScrollReveal>
           ))}
         </div>

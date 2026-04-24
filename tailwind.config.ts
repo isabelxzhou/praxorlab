@@ -8,48 +8,36 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cyan: {
-          400: "#22d3ee",
-          500: "#06b6d4",
-          600: "#0891b2",
+        bg: "oklch(0.195 0.006 80)",
+        surface: {
+          DEFAULT: "oklch(0.220 0.006 80)",
+          raised:  "oklch(0.235 0.007 80)",
+          hover:   "oklch(0.260 0.007 80)",
         },
-        accent: "#00d4ff",
+        ink: {
+          DEFAULT:   "oklch(0.975 0.005 80)",
+          secondary: "oklch(0.810 0.008 80)",
+          muted:     "oklch(0.640 0.010 80)",
+          dim:       "oklch(0.510 0.012 80)",
+          faint:     "oklch(0.400 0.012 80)",
+        },
+        rule: {
+          subtle: "oklch(0.275 0.008 80)",
+          DEFAULT: "oklch(0.340 0.009 80)",
+          strong: "oklch(0.440 0.010 80)",
+        },
+        signal: {
+          DEFAULT: "oklch(0.840 0.150 78)",
+          ink:     "oklch(0.190 0.060 78)",
+        },
       },
       fontFamily: {
-        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-dm-mono)", "monospace"],
+        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
-      animation: {
-        "float-slow": "float 20s ease-in-out infinite",
-        "float-slower": "float 30s ease-in-out infinite reverse",
-        "float-slowest": "float 25s ease-in-out infinite 5s",
-        "pulse-glow": "pulse-glow 4s ease-in-out infinite",
-        "slide-up": "slide-up 0.8s ease-out",
-        "fade-in": "fade-in 1s ease-out",
-        "gradient-shift": "gradient-shift 8s ease-in-out infinite",
-      },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "33%": { transform: "translate(30px, -50px) scale(1.05)" },
-          "66%": { transform: "translate(-20px, 20px) scale(0.95)" },
-        },
-        "pulse-glow": {
-          "0%, 100%": { opacity: "0.4" },
-          "50%": { opacity: "0.8" },
-        },
-        "slide-up": {
-          "0%": { transform: "translateY(40px)", opacity: "0" },
-          "100%": { transform: "translateY(0)", opacity: "1" },
-        },
-        "fade-in": {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        "gradient-shift": {
-          "0%, 100%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-        },
+      letterSpacing: {
+        "display": "-0.038em",
+        "hero":    "-0.042em",
       },
     },
   },

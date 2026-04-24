@@ -2,121 +2,136 @@
 
 import { motion } from "framer-motion";
 import ParticleNetwork from "./ParticleNetwork";
+import LiveTimestamp from "./LiveTimestamp";
 
-const ease = [0.25, 0.1, 0.25, 1];
+const ease = [0.16, 1, 0.3, 1] as const;
+
+const index = [
+  { n: "§02", label: "Research", href: "#research" },
+  { n: "§03", label: "Products", href: "#products" },
+  { n: "§04", label: "Programs", href: "#programs" },
+  { n: "§06", label: "Apply", href: "#apply" },
+];
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Particle network */}
+    <section className="relative min-h-screen flex flex-col overflow-hidden pt-24">
+      {/* Cursor-reactive node network */}
       <ParticleNetwork />
 
-      {/* Gradient orbs behind everything */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="orb orb-cyan w-[800px] h-[800px] -top-[300px] left-[10%] animate-float-slow opacity-40" />
-        <div className="orb orb-purple w-[700px] h-[700px] top-[20%] -right-[200px] animate-float-slower opacity-30" />
-        <div className="orb orb-blue w-[600px] h-[600px] -bottom-[200px] left-[40%] animate-float-slowest opacity-25" />
+      {/* Faint instrument grid, masked to center */}
+      <div className="absolute inset-0 field-grid pointer-events-none opacity-40" aria-hidden="true" />
+
+      {/* Editorial corner marks */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-24 mx-auto max-w-[min(1400px,94vw)] px-6 lg:px-10"
+        aria-hidden="true"
+      >
+        <div className="relative h-full">
+          <div className="absolute -left-2 -top-2 h-3 w-3 border-l border-t border-rule" />
+          <div className="absolute -right-2 -top-2 h-3 w-3 border-r border-t border-rule" />
+        </div>
       </div>
 
-      {/* Grid */}
-      <div className="absolute inset-0 grid-pattern opacity-40" />
-
-      {/* Radial vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.4)_50%,#000_80%)]" />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24">
-        {/* Status badge */}
+      <div className="relative z-10 mx-auto flex w-full max-w-[min(1400px,94vw)] flex-1 flex-col justify-between px-6 lg:px-10">
+        {/* ─── Masthead row ─── */}
         <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1, delay: 0.3, ease }}
-          className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-white/[0.06] bg-white/[0.02] backdrop-blur-md mb-12"
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease }}
+          className="flex flex-wrap items-end justify-between gap-4 pt-10 pb-8 border-b border-rule-subtle"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-          </span>
-          <span className="text-sm text-zinc-400 font-mono tracking-wide">
-            Applications Open — Cohort 7
-          </span>
+          <div className="flex items-baseline gap-4 sm:gap-6">
+            <span className="sig">Vol. VII</span>
+            <span className="sig hidden sm:inline">N° 07 · Spring</span>
+            <LiveTimestamp className="hidden lg:inline text-ink-dim" />
+          </div>
+          <div className="flex items-center gap-2.5">
+            <span className="status-dot" aria-hidden="true" />
+            <span className="label-mono text-[11px]">
+              <span className="hidden sm:inline">Applications Open · </span>
+              Cohort 07
+            </span>
+          </div>
         </motion.div>
 
-        {/* Main headline — ultra-light, massive */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.2, delay: 0.5, ease }}
-          className="hero-headline text-[clamp(3rem,8vw,7.5rem)] font-extralight tracking-[-0.04em] leading-[0.9] mb-10"
-        >
-          <span className="block text-white/90">The Future of</span>
-          <span className="block mt-1 hero-gradient-text">AI Research</span>
-          <span className="block mt-1 text-white/90">Starts Here</span>
-        </motion.h1>
+        {/* ─── Display ─── */}
+        <div className="flex-1 flex flex-col justify-center py-20 lg:py-28">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1, delay: 0.35, ease }}
+            className="max-w-[26ch]"
+          >
+            <h1 className="hero-headline text-[clamp(1.75rem,3.6vw,3.25rem)] text-ink">
+              Experimental AI research,{" "}
+              <span className="text-ink-2">
+                held to paper-grade rigor.
+              </span>
+            </h1>
+          </motion.div>
 
-        {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1, delay: 0.8, ease }}
-          className="max-w-2xl mx-auto text-base sm:text-lg text-zinc-500 font-light leading-[1.8] mb-14 tracking-wide"
-        >
-          Praxor Lab is where experimental AI meets rigorous research. Join our
-          fellowship to explore{" "}
-          <span className="text-zinc-300">autonomous agents</span>,{" "}
-          <span className="text-zinc-300">alternative neural architectures</span>,
-          and <span className="text-zinc-300">quantum AI</span> — and publish
-          groundbreaking papers with world-class mentors.
-        </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6, ease }}
+            className="mt-12 grid gap-10 md:grid-cols-12"
+          >
+            <p className="md:col-span-6 md:col-start-7 max-w-[62ch] text-[15px] leading-[1.7] text-ink-2">
+              Praxor Lab is a residency for researchers working at the edge of
+              what AI can become — autonomous agents, alternative neural
+              architectures, and quantum machine learning. Every fellow leaves
+              with a peer-reviewed paper and a transformed understanding of the
+              field.
+            </p>
+          </motion.div>
 
-        {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.85, ease }}
+            className="mt-12 flex flex-wrap items-center gap-3"
+          >
+            <a href="#apply" className="btn-solid px-6 py-3 text-[14px]">
+              Apply for Cohort 07
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+            <a href="#research" className="btn-ghost px-6 py-3 text-[14px]">
+              Read the research
+            </a>
+          </motion.div>
+        </div>
+
+        {/* ─── Index foot ─── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1, ease }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="border-t border-rule-subtle pt-6 pb-10"
         >
-          <a
-            href="#apply"
-            className="glow-button px-10 py-4 text-[15px] font-semibold tracking-wide"
-          >
-            Apply for Fellowship
-          </a>
-          <a
-            href="#research"
-            className="outline-button px-10 py-4 text-[15px] font-medium tracking-wide"
-          >
-            Explore Research
-          </a>
+          <div className="grid grid-cols-2 gap-x-8 gap-y-3 md:grid-cols-4">
+            {index.map((item) => (
+              <a
+                key={item.n}
+                href={item.href}
+                className="group flex items-baseline gap-3 text-[13px] text-ink-2 hover:text-ink transition-colors"
+              >
+                <span className="sig text-ink-dim group-hover:text-signal transition-colors">
+                  {item.n}
+                </span>
+                <span className="flex-1 border-b border-dashed border-rule-subtle group-hover:border-rule pb-0.5">
+                  {item.label}
+                </span>
+                <span className="text-ink-dim group-hover:text-ink transition-colors" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            ))}
+          </div>
         </motion.div>
-
-        {/* Bottom fade line */}
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 1.5, delay: 1.5, ease }}
-          className="mt-32 mb-0 section-divider"
-        />
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
-      >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span className="text-[10px] font-mono text-zinc-600 tracking-[0.2em] uppercase">
-            Scroll
-          </span>
-          <div className="w-[1px] h-8 bg-gradient-to-b from-zinc-600 to-transparent" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

@@ -4,187 +4,294 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
+function generateReceiptId() {
+  const n = Math.floor(1000 + Math.random() * 9000);
+  return `F-07-${n}`;
+}
+
+function formatFiledUTC(d: Date) {
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getUTCFullYear()}.${pad(d.getUTCMonth() + 1)}.${pad(
+    d.getUTCDate()
+  )} ${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())} UTC`;
+}
+
 export default function CTA() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [receipt, setReceipt] = useState<{ id: string; filed: string } | null>(
+    null
+  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      setReceipt({ id: generateReceiptId(), filed: formatFiledUTC(new Date()) });
       setSubmitted(true);
-    }, 1500);
+    }, 1200);
   };
 
   return (
-    <section id="apply" className="relative py-40 overflow-hidden">
-      <div className="section-divider absolute top-0 left-0 right-0" />
-
-      {/* Background */}
-      <div className="orb orb-cyan w-[800px] h-[800px] top-[-200px] left-[50%] -translate-x-1/2 animate-float-slow opacity-15" />
-      <div className="orb orb-purple w-[500px] h-[500px] bottom-[-150px] left-[30%] animate-float-slower opacity-10" />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
+    <section
+      id="apply"
+      className="relative border-t border-rule-subtle overflow-hidden"
+    >
+      <div className="mx-auto max-w-[min(1400px,94vw)] px-6 py-28 lg:px-10 lg:py-40">
         <ScrollReveal>
-          <p className="text-xs font-mono text-cyan-400/80 tracking-[0.25em] uppercase mb-6">
-            Join Praxor Lab
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight tracking-[-0.03em] leading-[1.05] mb-8">
-            Ready to push the
-            <br />
-            <span className="gradient-text font-light">boundaries of AI?</span>
-          </h2>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.2}>
-          <p className="text-base text-zinc-500 max-w-xl mx-auto mb-16 leading-[1.9]">
-            Applications for Cohort 7 are now open. Whether you&apos;re a
-            student, engineer, or researcher — if you&apos;re driven by
-            curiosity, we want to hear from you.
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.3}>
-          <div className="glass-card rounded-2xl p-8 sm:p-12 max-w-2xl mx-auto relative overflow-hidden">
-            {/* Success overlay */}
-            <AnimatePresence>
-              {submitted && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="absolute inset-0 bg-black/90 backdrop-blur-xl z-20 flex flex-col items-center justify-center p-8"
-                >
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                    className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center mb-6"
-                  >
-                    <svg className="w-8 h-8 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </motion.div>
-                  <h3 className="text-xl font-medium mb-2">Application Received</h3>
-                  <p className="text-sm text-zinc-400 max-w-sm">
-                    Thank you for your interest in Praxor Lab. We&apos;ll review your
-                    application and get back to you within 2 weeks.
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-xs text-zinc-500 mb-2 text-left font-mono tracking-wider uppercase"
-                  >
-                    Full Name
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    required
-                    placeholder="Jane Doe"
-                    className="input-field"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-xs text-zinc-500 mb-2 text-left font-mono tracking-wider uppercase"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    placeholder="jane@example.com"
-                    className="input-field"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="program"
-                  className="block text-xs text-zinc-500 mb-2 text-left font-mono tracking-wider uppercase"
-                >
-                  Program Interest
-                </label>
-                <select id="program" required className="input-field">
-                  <option value="">Select a program</option>
-                  <option value="fellowship">Research Fellowship (6 months)</option>
-                  <option value="lab">Research Lab (ongoing)</option>
-                  <option value="openlabs">Open Labs (ongoing)</option>
-                </select>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="focus"
-                  className="block text-xs text-zinc-500 mb-2 text-left font-mono tracking-wider uppercase"
-                >
-                  Research Interest
-                </label>
-                <select id="focus" required className="input-field">
-                  <option value="">Select your focus area</option>
-                  <option value="agents">AI Agents</option>
-                  <option value="architectures">Alternative Neural Architectures</option>
-                  <option value="quantum">Quantum AI</option>
-                  <option value="experimental">Experimental AI</option>
-                </select>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="about"
-                  className="block text-xs text-zinc-500 mb-2 text-left font-mono tracking-wider uppercase"
-                >
-                  Tell us about yourself
-                </label>
-                <textarea
-                  id="about"
-                  rows={4}
-                  required
-                  placeholder="Your background, what excites you about AI research, and what you hope to explore..."
-                  className="input-field resize-none"
-                />
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                disabled={loading}
-                className="w-full glow-button py-4 text-[15px] font-semibold tracking-wide disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              >
-                {loading ? (
-                  <>
-                    <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                    </svg>
-                    Submitting...
-                  </>
-                ) : (
-                  "Submit Application"
-                )}
-              </motion.button>
-
-              <p className="text-[11px] text-zinc-600 text-center tracking-wide">
-                Applications are reviewed on a rolling basis. You&apos;ll hear back
-                within 2 weeks.
-              </p>
-            </form>
+          <div className="flex items-center gap-3 mb-12">
+            <span className="sig text-signal">§06</span>
+            <span className="h-px flex-1 bg-rule-subtle" />
+            <span className="label-mono">Application</span>
           </div>
         </ScrollReveal>
+
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+          {/* Left column — intent */}
+          <div className="lg:col-span-5">
+            <ScrollReveal>
+              <h2 className="display text-[clamp(1.3rem,2.2vw,1.85rem)] text-ink">
+                Ready to push the boundaries of AI?
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={0.08}>
+              <p className="mt-8 max-w-[48ch] text-[15px] leading-[1.75] text-ink-2">
+                Applications for Cohort 07 are open. Whether you&apos;re a
+                student, engineer, or working researcher — if you&apos;re
+                driven by curiosity, we want to hear from you.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={0.16}>
+              <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-rule-subtle pt-8">
+                <div>
+                  <dt className="sig text-ink-dim">Deadline</dt>
+                  <dd className="mt-2 text-[15px] text-ink">Rolling</dd>
+                </div>
+                <div>
+                  <dt className="sig text-ink-dim">Decision</dt>
+                  <dd className="mt-2 text-[15px] text-ink">≤ 2 weeks</dd>
+                </div>
+                <div>
+                  <dt className="sig text-ink-dim">Start</dt>
+                  <dd className="mt-2 text-[15px] text-ink">Q3 2026</dd>
+                </div>
+                <div>
+                  <dt className="sig text-ink-dim">Duration</dt>
+                  <dd className="mt-2 text-[15px] text-ink">6 months</dd>
+                </div>
+              </dl>
+            </ScrollReveal>
+          </div>
+
+          {/* Right column — form */}
+          <div className="lg:col-span-7">
+            <ScrollReveal delay={0.12} direction="right">
+              <div className="relative">
+                <div className="flex items-center justify-between border-b border-rule-subtle pb-3">
+                  <span className="sig text-ink-dim">Form F-07</span>
+                  <span className="sig text-ink-dim">Praxor Lab · Cohort 07</span>
+                </div>
+
+                <div className="relative">
+                  <AnimatePresence>
+                    {submitted && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="absolute inset-0 z-20 flex flex-col items-start justify-center bg-bg/95 backdrop-blur-sm p-2"
+                      >
+                        <div className="flex items-center gap-3">
+                          <motion.div
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                            className="flex h-10 w-10 items-center justify-center border border-signal"
+                          >
+                            <svg
+                              className="h-4 w-4 text-signal"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                            >
+                              <path
+                                d="M3 8.5l3.5 3.5L13 5"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </motion.div>
+                          <span className="sig text-signal">Status · Received</span>
+                        </div>
+                        <h3 className="display mt-6 text-[clamp(1.25rem,2vw,1.75rem)] text-ink">
+                          Application received.
+                        </h3>
+                        <p className="mt-4 max-w-md text-[14.5px] leading-[1.7] text-ink-muted">
+                          Thank you for your interest in Praxor Lab. You&apos;ll
+                          hear from our team within two weeks.
+                        </p>
+
+                        {receipt && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                            className="mt-8 w-full max-w-md border border-rule-subtle bg-surface/60 p-4"
+                          >
+                            <div className="flex items-center justify-between border-b border-rule-subtle pb-2">
+                              <span className="sig text-ink-dim">Intake Receipt</span>
+                              <span className="sig text-signal">Filed</span>
+                            </div>
+                            <dl className="mt-3 grid grid-cols-[auto,1fr] gap-x-6 gap-y-2">
+                              <dt className="sig text-ink-dim">Ref.</dt>
+                              <dd className="font-mono text-[13px] text-ink tabular-nums">
+                                {receipt.id}
+                              </dd>
+                              <dt className="sig text-ink-dim">Filed</dt>
+                              <dd className="font-mono text-[13px] text-ink-2 tabular-nums">
+                                {receipt.filed}
+                              </dd>
+                              <dt className="sig text-ink-dim">Cohort</dt>
+                              <dd className="font-mono text-[13px] text-ink-2">
+                                07 · Spring 2026
+                              </dd>
+                            </dl>
+                          </motion.div>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <form
+                    onSubmit={handleSubmit}
+                    className="divide-y divide-rule-subtle"
+                  >
+                    <div className="grid gap-5 py-6 sm:grid-cols-2">
+                      <div>
+                        <label
+                          htmlFor="name"
+                          className="label-mono block mb-3"
+                        >
+                          <span className="mr-2 text-ink-dim">01</span>
+                          Full name
+                        </label>
+                        <input
+                          id="name"
+                          type="text"
+                          required
+                          placeholder="Jane Doe"
+                          className="field"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="email"
+                          className="label-mono block mb-3"
+                        >
+                          <span className="mr-2 text-ink-dim">02</span>
+                          Email
+                        </label>
+                        <input
+                          id="email"
+                          type="email"
+                          required
+                          placeholder="jane@example.com"
+                          className="field"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="py-6">
+                      <label htmlFor="program" className="label-mono block mb-3">
+                        <span className="mr-2 text-ink-dim">03</span>
+                        Program interest
+                      </label>
+                      <select id="program" required className="field">
+                        <option value="">Select a program</option>
+                        <option value="fellowship">Research Fellowship (6 months)</option>
+                        <option value="lab">Research Lab (ongoing)</option>
+                        <option value="openlabs">Open Labs (ongoing)</option>
+                      </select>
+                    </div>
+
+                    <div className="py-6">
+                      <label htmlFor="focus" className="label-mono block mb-3">
+                        <span className="mr-2 text-ink-dim">04</span>
+                        Research interest
+                      </label>
+                      <select id="focus" required className="field">
+                        <option value="">Select your focus area</option>
+                        <option value="agents">AI Agents</option>
+                        <option value="architectures">Alternative Neural Architectures</option>
+                        <option value="quantum">Quantum AI</option>
+                        <option value="experimental">Experimental AI</option>
+                      </select>
+                    </div>
+
+                    <div className="py-6">
+                      <label htmlFor="about" className="label-mono block mb-3">
+                        <span className="mr-2 text-ink-dim">05</span>
+                        Tell us about yourself
+                      </label>
+                      <textarea
+                        id="about"
+                        rows={4}
+                        required
+                        placeholder="Your background, what excites you about AI research, and what you hope to explore…"
+                        className="field resize-none"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-4 pt-7 sm:flex-row sm:items-center sm:justify-between">
+                      <p className="sig text-ink-dim">
+                        Reviewed on a rolling basis. Decision within two weeks.
+                      </p>
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="btn-solid px-6 py-3 text-[14px]"
+                      >
+                        {loading ? (
+                          <>
+                            <svg
+                              className="h-3.5 w-3.5 animate-spin"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              aria-hidden="true"
+                            >
+                              <circle
+                                className="opacity-20"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="3"
+                              />
+                              <path
+                                className="opacity-90"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8v3a5 5 0 00-5 5H4z"
+                              />
+                            </svg>
+                            Submitting
+                          </>
+                        ) : (
+                          <>
+                            Submit application
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                              <path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
       </div>
     </section>
   );

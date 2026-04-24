@@ -3,60 +3,98 @@
 import ScrollReveal from "./ScrollReveal";
 import AnimatedCounter from "./AnimatedCounter";
 
-const stats = [
-  { end: 200, suffix: "+", label: "Research Papers", description: "Published in top-tier venues" },
-  { end: 50, suffix: "+", label: "Expert Mentors", description: "From leading institutions" },
-  { end: 15, suffix: "+", label: "Research Domains", description: "Across experimental AI" },
-  { end: 95, suffix: "%", label: "Publication Rate", description: "Fellows who publish" },
+// One lead figure + three supporting — asymmetric, not the 4-equal metric grid
+const leadStat = {
+  end: 95,
+  suffix: "%",
+  label: "Publication Rate",
+  description: "of fellows leave with peer-reviewed work",
+  serial: "a.04",
+};
+
+const supportingStats = [
+  { end: 200, suffix: "+", label: "Papers",   description: "In peer-reviewed venues",    serial: "a.01" },
+  { end: 50,  suffix: "+", label: "Mentors",  description: "From leading institutions",  serial: "a.02" },
+  { end: 15,  suffix: "+", label: "Domains",  description: "Across experimental AI",     serial: "a.03" },
+];
+
+const focus = [
+  { title: "Agent-First",     tone: "var(--cat-agents)",        desc: "AI that reasons, plans, and acts. Multi-agent systems and long-horizon autonomy." },
+  { title: "Beyond LLMs",     tone: "var(--cat-architectures)", desc: "Architectures the mainstream hasn't imagined yet — liquid nets, SSMs, neuromorphic substrates." },
+  { title: "Quantum-Ready",   tone: "var(--cat-quantum)",       desc: "Preparing for the quantum advantage in machine learning: QML, variational circuits, hybrids." },
+  { title: "Research Rigor",  tone: "var(--cat-experimental)",  desc: "Every project is held to peer-review standards. Results over demos. Papers over posts." },
 ];
 
 export default function About() {
   return (
-    <section className="relative py-40 overflow-hidden">
-      <div className="absolute inset-0 radial-fade" />
+    <section id="about" className="relative overflow-hidden">
+      <div className="mx-auto max-w-[min(1400px,94vw)] px-6 lg:px-10">
+        {/* ── Stats: 1 lead + 3 supporting (asymmetric) ── */}
+        <div className="grid border-y border-rule-subtle lg:grid-cols-12">
+          {/* Lead figure spans 6 cols with richer layout */}
+          <div className="relative lg:col-span-6 lg:border-r lg:border-rule-subtle">
+            <div className="flex items-start gap-5 px-6 py-10 lg:gap-8 lg:px-8 lg:py-14">
+              <span className="sig text-ink-dim mt-2">{leadStat.serial}</span>
+              <div className="flex-1">
+                <div className="label-mono mb-4">Lead Metric</div>
+                <div className="flex items-baseline gap-3">
+                  <div className="display text-[clamp(2.5rem,4.4vw,3.75rem)] tabular-nums text-ink">
+                    <AnimatedCounterInline
+                      end={leadStat.end}
+                      suffix={leadStat.suffix}
+                    />
+                  </div>
+                  <span className="text-[15px] font-medium text-ink">
+                    {leadStat.label}
+                  </span>
+                </div>
+                <p className="mt-3 max-w-[40ch] text-[13.5px] leading-[1.6] text-ink-muted">
+                  {leadStat.description}
+                </p>
+              </div>
+            </div>
+          </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Top: Stats bar */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 mb-32 border-y border-white/[0.04]">
-          {stats.map((stat, i) => (
-            <div
-              key={i}
-              className={`${i > 0 ? "border-l border-white/[0.04]" : ""} ${i === 2 ? "max-lg:border-l-0 max-lg:border-t border-white/[0.04]" : ""} ${i === 3 ? "max-lg:border-t border-white/[0.04]" : ""}`}
-            >
+          {/* 3 supporting figures stacked right */}
+          <div className="grid grid-cols-1 divide-y divide-rule-subtle sm:grid-cols-3 sm:divide-y-0 sm:divide-x lg:col-span-6 lg:grid-cols-1 lg:divide-x-0 lg:divide-y border-t border-rule-subtle lg:border-t-0">
+            {supportingStats.map((stat) => (
               <AnimatedCounter
+                key={stat.serial}
                 end={stat.end}
                 suffix={stat.suffix}
                 label={stat.label}
                 description={stat.description}
+                serial={stat.serial}
               />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* About text */}
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
-          <div>
+        {/* Essay */}
+        <div className="grid gap-12 py-24 md:grid-cols-12 lg:gap-20 lg:py-32">
+          <div className="md:col-span-5">
             <ScrollReveal>
-              <p className="text-xs font-mono text-cyan-400/80 tracking-[0.25em] uppercase mb-6">
-                About the Lab
-              </p>
+              <div className="flex items-center gap-3 mb-8">
+                <span className="sig text-signal">§01</span>
+                <span className="h-px flex-1 bg-rule-subtle" />
+                <span className="label-mono">About the Lab</span>
+              </div>
             </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight tracking-[-0.03em] leading-[1.05] mb-8">
-                Research beyond
-                <br />
-                <span className="gradient-text font-light">the ordinary</span>
+            <ScrollReveal delay={0.08}>
+              <h2 className="display text-[clamp(1.3rem,2.2vw,1.85rem)] text-ink">
+                Research beyond the ordinary.
               </h2>
             </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <p className="text-base text-zinc-500 leading-[1.9] mb-6">
-                Praxor Lab exists at the intersection of curiosity and rigor. We
-                are a research collective dedicated to pushing the boundaries of
-                what AI can become — not just refining what it already is.
+            <ScrollReveal delay={0.16}>
+              <p className="mt-6 max-w-[42ch] text-[15px] leading-[1.75] text-ink-2">
+                Praxor Lab exists at the intersection of curiosity and rigor.
+                We are a research collective dedicated to pushing the
+                boundaries of what AI can become — not just refining what it
+                already is.
               </p>
             </ScrollReveal>
-            <ScrollReveal delay={0.3}>
-              <p className="text-base text-zinc-500 leading-[1.9]">
+            <ScrollReveal delay={0.24}>
+              <p className="mt-4 max-w-[42ch] text-[15px] leading-[1.75] text-ink-muted">
                 Our researchers don&apos;t just study existing models. They
                 architect new paradigms — from bio-inspired neural networks to
                 quantum-enhanced learning systems. Every fellow leaves with a
@@ -66,44 +104,81 @@ export default function About() {
             </ScrollReveal>
           </div>
 
-          {/* Right: visual element */}
-          <ScrollReveal delay={0.2} direction="right">
-            <div className="relative">
-              <div className="glass-card rounded-2xl p-8 lg:p-10">
-                <p className="text-xs font-mono text-cyan-400/60 tracking-[0.2em] uppercase mb-6">
-                  Our Focus
-                </p>
-                <ul className="space-y-5">
-                  {[
-                    { title: "Beyond LLMs", desc: "Exploring architectures the mainstream hasn't imagined yet" },
-                    { title: "Agent-First", desc: "Building AI that reasons, plans, and acts autonomously" },
-                    { title: "Quantum-Ready", desc: "Preparing for the quantum advantage in machine learning" },
-                    { title: "Research Rigor", desc: "Every project is held to peer-review publication standards" },
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-4 group">
-                      <div className="w-8 h-8 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:border-cyan-400/20 transition-colors duration-300">
-                        <span className="text-xs font-mono text-cyan-400/60">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                      </div>
+          <div className="md:col-span-7">
+            <ScrollReveal delay={0.12} direction="right">
+              <div className="panel">
+                <div className="flex items-center justify-between border-b border-rule-subtle px-6 py-4 lg:px-8">
+                  <span className="label-mono">Fig. A — Areas of focus</span>
+                  <span className="sig text-ink-dim">04 / 04</span>
+                </div>
+                <ol className="divide-y divide-rule-subtle">
+                  {focus.map((item, i) => (
+                    <li
+                      key={item.title}
+                      className="group grid grid-cols-[auto,1fr] items-baseline gap-6 px-6 py-5 lg:px-8 lg:py-6"
+                    >
+                      <span
+                        className="sig inline-flex items-center gap-2 tabular-nums"
+                        style={{ color: item.tone }}
+                      >
+                        <span
+                          className="inline-block h-1.5 w-1.5 rounded-full"
+                          style={{ background: item.tone }}
+                          aria-hidden="true"
+                        />
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                       <div>
-                        <div className="text-sm font-medium text-zinc-200 mb-1">
+                        <div className="text-[15px] font-medium text-ink">
                           {item.title}
                         </div>
-                        <div className="text-sm text-zinc-500 leading-relaxed">
+                        <div className="mt-2 max-w-[58ch] text-[14px] leading-[1.65] text-ink-muted">
                           {item.desc}
                         </div>
                       </div>
                     </li>
                   ))}
-                </ul>
+                </ol>
               </div>
-              {/* Decorative glow behind card */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-cyan-400/[0.03] to-purple-500/[0.03] rounded-3xl blur-xl -z-10" />
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>
   );
+}
+
+// Lightweight inline counter for the lead stat (doesn't need the padded wrapper)
+function AnimatedCounterInline({ end, suffix }: { end: number; suffix: string }) {
+  return (
+    <span>
+      <InlineCount end={end} />
+      {suffix}
+    </span>
+  );
+}
+
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
+
+function InlineCount({ end, duration = 1.8 }: { end: number; duration?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [n, setN] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    const start = performance.now();
+    let frame = 0;
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / (duration * 1000));
+      setN(Math.floor((1 - Math.pow(1 - p, 3)) * end));
+      if (p < 1) frame = requestAnimationFrame(tick);
+      else setN(end);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [inView, end, duration]);
+
+  return <span ref={ref}>{n}</span>;
 }

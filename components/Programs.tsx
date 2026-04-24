@@ -3,153 +3,254 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
-const programs = [
-  {
-    featured: true,
-    name: "Research Fellowship",
-    duration: "6 Months",
-    description:
-      "Our flagship program. Full immersion into experimental AI research with dedicated mentorship, lab resources, and publication support.",
-    features: [
-      "1-on-1 mentor matching with domain experts",
-      "Full access to compute resources & infrastructure",
-      "Weekly research seminars & peer review",
-      "Publication support & conference prep",
-      "Stipend for full-time fellows",
-      "Alumni network & ongoing collaboration",
-    ],
-    cta: "Apply for Fellowship",
-    href: "#apply",
-  },
+type Program = {
+  featured: boolean;
+  code: string;
+  name: string;
+  duration: string;
+  description: string;
+  features: string[];
+  cta: string;
+  href: string;
+};
+
+const flagship: Program = {
+  featured: true,
+  code: "P-01",
+  name: "Research Fellowship",
+  duration: "6 Months",
+  description:
+    "Our flagship program. Full immersion into experimental AI research with dedicated mentorship, lab resources, and publication support.",
+  features: [
+    "1-on-1 mentor matching with domain experts",
+    "Full access to compute resources & infrastructure",
+    "Weekly research seminars & peer review",
+    "Publication support & conference prep",
+    "Stipend for full-time fellows",
+    "Alumni network & ongoing collaboration",
+  ],
+  cta: "Apply for Fellowship",
+  href: "#apply",
+};
+
+const satellites: Program[] = [
   {
     featured: false,
+    code: "P-02",
     name: "Research Lab",
     duration: "Ongoing",
     description:
-      "Our in-house research arm. Praxor Lab conducts original research across experimental AI, publishing papers and open-sourcing tools for the broader community.",
+      "Our in-house research arm. Original research across experimental AI, published in peer-reviewed venues.",
     features: [
       "Original research in agents, quantum AI & beyond",
       "Open-source frameworks & tooling",
-      "Collaborative projects with fellows & mentors",
-      "Regular paper submissions to top venues",
-      "Internal seminars & knowledge sharing",
-      "Partnerships with academic institutions",
+      "Regular submissions to top venues",
     ],
     cta: "View Research",
     href: "#research",
   },
   {
     featured: false,
+    code: "P-03",
     name: "Open Labs",
     duration: "Ongoing",
     description:
-      "Community-driven workshops, reading groups, and experimental sessions. Open to anyone passionate about the frontier.",
+      "Community-driven workshops, reading groups, and experimental sessions. Open to anyone curious.",
     features: [
       "Weekly workshops on emerging topics",
       "Guest lectures from leading researchers",
-      "Paper reading groups & discussions",
-      "Open-source collaboration projects",
       "Community Discord & resource library",
-      "No prerequisites — just curiosity",
     ],
     cta: "Join Community",
     href: "#apply",
   },
 ];
 
+function FeatureList({ items }: { items: string[] }) {
+  return (
+    <ul className="flex flex-col gap-2.5">
+      {items.map((feature) => (
+        <li
+          key={feature}
+          className="grid grid-cols-[auto,1fr] items-start gap-3 text-[13px] leading-[1.55] text-ink-2"
+        >
+          <svg
+            className="mt-[3px] h-3 w-3 text-ink-dim"
+            viewBox="0 0 12 12"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M2 6l3 3 5-6"
+              stroke="currentColor"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span>{feature}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function Programs() {
   return (
-    <section id="programs" className="relative py-40 overflow-hidden">
-      <div className="section-divider absolute top-0 left-0 right-0" />
-      <div className="orb orb-cyan w-[500px] h-[500px] bottom-[10%] -left-[200px] animate-float-slower opacity-15" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <section
+      id="programs"
+      className="relative border-t border-rule-subtle overflow-hidden"
+    >
+      <div className="mx-auto max-w-[min(1400px,94vw)] px-6 py-24 lg:px-10 lg:py-32">
         <ScrollReveal>
-          <div className="max-w-3xl mb-20">
-            <p className="text-xs font-mono text-cyan-400/80 tracking-[0.25em] uppercase mb-6">
-              Programs
-            </p>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight tracking-[-0.03em] leading-[1.05] mb-6">
-              Your path into{" "}
-              <span className="gradient-text font-light">AI research</span>
-            </h2>
-            <p className="text-base text-zinc-500 leading-[1.9] max-w-2xl">
-              Whether you&apos;re diving deep into a 6-month fellowship or
-              exploring through our open labs, there&apos;s a program for your ambition.
+          <div className="mb-10 flex items-center gap-3">
+            <span className="sig text-signal">§04</span>
+            <span className="h-px flex-1 bg-rule-subtle" />
+            <span className="label-mono">Programs</span>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.08}>
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <h2 className="display text-[clamp(1.3rem,2.2vw,1.85rem)] text-ink">
+                Your path into AI research.
+              </h2>
+            </div>
+            <p className="max-w-[52ch] text-[15px] leading-[1.75] text-ink-muted lg:col-span-6 lg:col-start-7">
+              Whether you&apos;re diving deep into a six-month fellowship or
+              exploring through our open labs, there&apos;s a program sized to
+              your ambition. Every track is built around one premise: the work
+              gets published.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-3 gap-5">
-          {programs.map((program, i) => (
-            <ScrollReveal key={i} delay={i * 0.12}>
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                className={`relative rounded-2xl p-8 lg:p-9 h-full flex flex-col group ${
-                  program.featured
-                    ? "glass-card animated-border"
-                    : "glass-card"
-                }`}
-              >
-                {program.featured && (
-                  <div className="absolute -top-3 left-8">
-                    <span className="px-3 py-1 text-[10px] font-mono font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 text-black rounded-full tracking-wider">
-                      FLAGSHIP
-                    </span>
-                  </div>
-                )}
+        {/* Asymmetric layout: flagship takes 8 cols, satellites stack in 4 */}
+        <div className="mt-14 grid gap-5 lg:grid-cols-12">
+          {/* ── Flagship (P-01) ── */}
+          <ScrollReveal className="lg:col-span-8" delay={0.1}>
+            <motion.article
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="group panel is-interactive relative flex h-full flex-col border-signal/40"
+            >
+              <div className="absolute left-8 top-0 -translate-y-1/2">
+                <span className="inline-flex items-center gap-2 bg-bg px-3 py-1">
+                  <span className="h-1.5 w-1.5 rounded-full bg-signal" />
+                  <span className="sig tracking-[0.12em] text-signal">
+                    Flagship
+                  </span>
+                </span>
+              </div>
 
-                <div className="mb-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-medium text-zinc-100">
-                      {program.name}
-                    </h3>
-                    <span className="text-xs font-mono text-cyan-400/70 tracking-wider">
-                      {program.duration}
-                    </span>
-                  </div>
-                  <p className="text-sm text-zinc-500 leading-[1.8]">
-                    {program.description}
+              <header className="flex flex-col gap-6 border-b border-rule-subtle px-8 py-7 sm:flex-row sm:items-start sm:justify-between lg:px-10">
+                <div>
+                  <div className="sig text-ink-dim">{flagship.code}</div>
+                  <h3 className="mt-2 text-[17px] font-medium text-ink lg:text-[19px]">
+                    {flagship.name}
+                  </h3>
+                  <p className="mt-3 max-w-[48ch] text-[14px] leading-[1.7] text-ink-muted">
+                    {flagship.description}
                   </p>
                 </div>
+                <dl className="flex gap-8 border-t border-rule-subtle pt-5 sm:flex-col sm:gap-4 sm:items-end sm:border-t-0 sm:pt-0 sm:text-right">
+                  <div>
+                    <dt className="sig text-ink-dim">Duration</dt>
+                    <dd className="mt-1 text-[14px] text-ink">
+                      {flagship.duration}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="sig text-ink-dim">Cohort</dt>
+                    <dd className="mt-1 text-[14px] text-ink">07 · 2026</dd>
+                  </div>
+                </dl>
+              </header>
 
-                <ul className="space-y-3.5 mb-10 flex-1">
-                  {program.features.map((feature, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-3 text-[13px] text-zinc-400"
+              {/* Two-column inside flagship card */}
+              <div className="grid gap-10 px-8 py-8 lg:grid-cols-2 lg:px-10 lg:py-10">
+                <FeatureList items={flagship.features.slice(0, 3)} />
+                <FeatureList items={flagship.features.slice(3)} />
+              </div>
+
+              <div className="mt-auto flex flex-col gap-4 border-t border-rule-subtle px-8 py-6 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+                <span className="sig text-ink-dim">
+                  Rolling review · Decision ≤ 2 weeks
+                </span>
+                <a href={flagship.href} className="btn-solid w-full px-5 py-3 text-[13.5px] sm:w-auto">
+                  {flagship.cta}
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2.5 6h7m0 0L6.5 3m3 3L6.5 9"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </motion.article>
+          </ScrollReveal>
+
+          {/* ── Satellites (P-02, P-03) stacked ── */}
+          <div className="flex flex-col gap-5 lg:col-span-4">
+            {satellites.map((program, i) => (
+              <ScrollReveal key={program.code} delay={0.14 + i * 0.08}>
+                <motion.article
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="panel is-interactive flex h-full flex-col"
+                >
+                  <header className="flex items-start justify-between gap-4 border-b border-rule-subtle px-6 py-5">
+                    <div>
+                      <div className="sig text-ink-dim">{program.code}</div>
+                      <h3 className="mt-2 text-[15px] font-medium text-ink">
+                        {program.name}
+                      </h3>
+                    </div>
+                    <span className="sig text-ink-muted">{program.duration}</span>
+                  </header>
+
+                  <div className="flex flex-1 flex-col gap-5 px-6 py-6">
+                    <p className="text-[13.5px] leading-[1.65] text-ink-muted">
+                      {program.description}
+                    </p>
+                    <FeatureList items={program.features} />
+
+                    <a
+                      href={program.href}
+                      className="mt-auto inline-flex items-center gap-2 self-start border-b border-rule pb-0.5 text-[13px] text-ink-2 transition-colors hover:border-ink hover:text-ink"
                     >
+                      {program.cta}
                       <svg
-                        className="w-3.5 h-3.5 text-cyan-400/50 mt-[3px] flex-shrink-0"
-                        viewBox="0 0 16 16"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
                         fill="none"
                         aria-hidden="true"
                       >
                         <path
-                          d="M3 8.5l3 3 7-7"
+                          d="M2.5 6h7m0 0L6.5 3m3 3L6.5 9"
                           stroke="currentColor"
-                          strokeWidth="1.5"
+                          strokeWidth="1.2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
                       </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={program.href}
-                  className={`block text-center py-3.5 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    program.featured ? "glow-button" : "outline-button"
-                  }`}
-                >
-                  {program.cta}
-                </a>
-              </motion.div>
-            </ScrollReveal>
-          ))}
+                    </a>
+                  </div>
+                </motion.article>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

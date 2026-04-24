@@ -1,27 +1,29 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, DM_Mono } from "next/font/google";
+import { Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-geist-sans",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const dmMono = DM_Mono({
+const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-dm-mono",
-  weight: ["300", "400", "500"],
+  variable: "--font-geist-mono",
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#26241f",
 };
 
 export const metadata: Metadata = {
   title: "Praxor Lab — Experimental AI Research",
   description:
-    "Pioneering the frontier of experimental AI research. Join our fellowship to work with world-class mentors, conduct cutting-edge research in AI agents, alternative neural architectures, and quantum AI, and publish high-impact papers.",
+    "A research residency working on autonomous agents, alternative neural architectures, and quantum AI. Fellowship, mentorship, and publication support for researchers working at the frontier.",
   keywords: [
     "AI research",
     "AI agents",
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%2300d4ff'/><stop offset='100%' stop-color='%233b82f6'/></linearGradient></defs><rect x='6' y='6' width='20' height='20' rx='4' transform='rotate(45 16 16)' fill='url(%23g)'/><rect x='9' y='9' width='14' height='14' rx='3' transform='rotate(45 16 16)' fill='%23000'/><rect x='12' y='12' width='8' height='8' rx='2' transform='rotate(45 16 16)' fill='url(%23g)'/></svg>",
+        url: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2326241f'/><rect x='7' y='7' width='18' height='18' fill='none' stroke='%23f0b850' stroke-width='1.5'/><line x1='7' y1='16' x2='25' y2='16' stroke='%23f0b850' stroke-width='1.5'/><line x1='16' y1='7' x2='16' y2='25' stroke='%23f0b850' stroke-width='1.5'/></svg>",
         type: "image/svg+xml",
       },
     ],
@@ -42,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Praxor Lab — Experimental AI Research",
     description:
-      "Join the frontier of experimental AI research. Fellowship programs, mentorship, and publication support.",
+      "A research residency working on autonomous agents, alternative neural architectures, and quantum AI.",
     type: "website",
     siteName: "Praxor Lab",
   },
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Praxor Lab — Experimental AI Research",
     description:
-      "Join the frontier of experimental AI research. Fellowship programs, mentorship, and publication support.",
+      "A research residency working on autonomous agents, alternative neural architectures, and quantum AI.",
   },
 };
 
@@ -60,8 +62,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmMono.variable}`}>
-      <body className="font-sans noise-overlay">{children}</body>
+    <html lang="en" className={`${manrope.variable} ${jetBrainsMono.variable}`}>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }

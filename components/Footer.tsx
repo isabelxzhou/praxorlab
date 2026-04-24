@@ -4,36 +4,41 @@ import Logo from "./Logo";
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/[0.03] bg-black">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
-        <div className="grid md:grid-cols-12 gap-12 mb-20">
-          {/* Brand */}
+    <footer className="relative border-t border-rule-subtle bg-bg">
+      <div className="mx-auto max-w-[min(1400px,94vw)] px-6 py-20 lg:px-10">
+        <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
-            <a href="#" className="flex items-center gap-3 mb-5" aria-label="Praxor Lab home">
-              <Logo size={22} />
-              <span className="text-sm font-medium tracking-[-0.02em]">
-                PRAXOR
-                <span className="text-zinc-600 font-light ml-0.5">LAB</span>
+            <a
+              href="#"
+              className="flex items-center gap-3 text-ink"
+              aria-label="Praxor Lab home"
+            >
+              <span className="text-signal"><Logo size={20} /></span>
+              <span className="text-[13.5px] font-medium tracking-[-0.01em]">
+                Praxor
+                <span className="ml-1 text-ink-muted font-normal">Lab</span>
               </span>
             </a>
-            <p className="text-[13px] text-zinc-600 leading-[1.8] max-w-xs">
-              Pioneering the frontier of experimental AI research through
-              mentorship, community, and rigorous exploration.
+            <p className="mt-6 max-w-xs text-[13px] leading-[1.75] text-ink-muted">
+              A research residency for experimental AI. Agents, alternative
+              architectures, quantum machine learning. Published work, not
+              demos.
             </p>
+            <div className="mt-8 flex items-center gap-2">
+              <span className="status-dot" aria-hidden="true" />
+              <span className="sig text-ink-muted">Applications open · Cohort 07</span>
+            </div>
           </div>
 
-          {/* Research */}
           <div className="md:col-span-2 md:col-start-6">
-            <h4 className="text-xs font-mono text-zinc-400 tracking-[0.15em] uppercase mb-5">
-              Research
-            </h4>
-            <ul className="space-y-3">
+            <h4 className="label-mono mb-5">Research</h4>
+            <ul className="flex flex-col gap-3">
               {["AI Agents", "Neural Architectures", "Quantum AI", "Experimental AI", "Publications"].map(
                 (item) => (
                   <li key={item}>
                     <a
                       href="#research"
-                      className="text-[13px] text-zinc-600 hover:text-zinc-300 transition-colors duration-300"
+                      className="text-[13px] text-ink-2 transition-colors hover:text-ink"
                     >
                       {item}
                     </a>
@@ -43,18 +48,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Programs */}
           <div className="md:col-span-2">
-            <h4 className="text-xs font-mono text-zinc-400 tracking-[0.15em] uppercase mb-5">
-              Programs
-            </h4>
-            <ul className="space-y-3">
+            <h4 className="label-mono mb-5">Programs</h4>
+            <ul className="flex flex-col gap-3">
               {["Fellowship", "Accelerator", "Open Labs", "Mentorship", "Apply"].map(
                 (item) => (
                   <li key={item}>
                     <a
                       href="#programs"
-                      className="text-[13px] text-zinc-600 hover:text-zinc-300 transition-colors duration-300"
+                      className="text-[13px] text-ink-2 transition-colors hover:text-ink"
                     >
                       {item}
                     </a>
@@ -64,12 +66,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Connect */}
           <div className="md:col-span-2">
-            <h4 className="text-xs font-mono text-zinc-400 tracking-[0.15em] uppercase mb-5">
-              Connect
-            </h4>
-            <ul className="space-y-3">
+            <h4 className="label-mono mb-5">Connect</h4>
+            <ul className="flex flex-col gap-3">
               {[
                 { label: "Twitter / X", href: "#" },
                 { label: "GitHub", href: "#" },
@@ -80,7 +79,7 @@ export default function Footer() {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="text-[13px] text-zinc-600 hover:text-zinc-300 transition-colors duration-300"
+                    className="text-[13px] text-ink-2 transition-colors hover:text-ink"
                   >
                     {item.label}
                   </a>
@@ -90,17 +89,27 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-white/[0.03] pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] text-zinc-700 tracking-wide">
-            &copy; {new Date().getFullYear()} Praxor Lab. All rights reserved.
-          </p>
+        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-rule-subtle pt-6 md:flex-row md:items-center">
+          <div className="flex items-center gap-5">
+            <p className="sig text-ink-dim">
+              © {new Date().getFullYear()} Praxor Lab
+            </p>
+            <p className="sig hidden text-ink-dim sm:block">
+              Vol. VII · Spring 2026
+            </p>
+          </div>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-[11px] text-zinc-700 hover:text-zinc-400 transition-colors tracking-wide">
-              Privacy Policy
+            <a
+              href="#"
+              className="sig text-ink-dim transition-colors hover:text-ink-2"
+            >
+              Privacy
             </a>
-            <a href="#" className="text-[11px] text-zinc-700 hover:text-zinc-400 transition-colors tracking-wide">
-              Terms of Service
+            <a
+              href="#"
+              className="sig text-ink-dim transition-colors hover:text-ink-2"
+            >
+              Terms
             </a>
           </div>
         </div>
