@@ -6,7 +6,7 @@ import ScrollReveal from "./ScrollReveal";
 
 function generateReceiptId() {
   const n = Math.floor(1000 + Math.random() * 9000);
-  return `F-07-${n}`;
+  return `F-01-${n}`;
 }
 
 function formatFiledUTC(d: Date) {
@@ -52,14 +52,14 @@ export default function CTA() {
           <div className="lg:col-span-5">
             <ScrollReveal>
               <h2 className="display text-[clamp(1.3rem,2.2vw,1.85rem)] text-ink">
-                Ready to push the boundaries of AI?
+                Want to join the lab?
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={0.08}>
               <p className="mt-8 max-w-[48ch] text-[15px] leading-[1.75] text-ink-2">
-                Applications for Cohort 07 are open. Whether you&apos;re a
-                student, engineer, or working researcher — if you&apos;re
-                driven by curiosity, we want to hear from you.
+                We&apos;re looking for our first fellows. Students, engineers,
+                and self-directed researchers are all welcome — what we need
+                most is people who care about getting the empirical work right.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.16}>
@@ -89,8 +89,8 @@ export default function CTA() {
             <ScrollReveal delay={0.12} direction="right">
               <div className="relative">
                 <div className="flex items-center justify-between border-b border-rule-subtle pb-3">
-                  <span className="sig text-ink-dim">Form F-07</span>
-                  <span className="sig text-ink-dim">Praxor Lab · Cohort 07</span>
+                  <span className="sig text-ink-dim">Form F-01</span>
+                  <span className="sig text-ink-dim">Praxor Lab · Cohort 01</span>
                 </div>
 
                 <div className="relative">
@@ -154,7 +154,7 @@ export default function CTA() {
                               </dd>
                               <dt className="sig text-ink-dim">Cohort</dt>
                               <dd className="font-mono text-[13px] text-ink-2">
-                                07 · Spring 2026
+                                01 · Spring 2026
                               </dd>
                             </dl>
                           </motion.div>
@@ -178,7 +178,9 @@ export default function CTA() {
                         </label>
                         <input
                           id="name"
+                          name="name"
                           type="text"
+                          autoComplete="name"
                           required
                           placeholder="Jane Doe"
                           className="field"
@@ -194,7 +196,9 @@ export default function CTA() {
                         </label>
                         <input
                           id="email"
+                          name="email"
                           type="email"
+                          autoComplete="email"
                           required
                           placeholder="jane@example.com"
                           className="field"
@@ -207,7 +211,7 @@ export default function CTA() {
                         <span className="mr-2 text-ink-dim">03</span>
                         Program interest
                       </label>
-                      <select id="program" required className="field">
+                      <select id="program" name="program" required className="field">
                         <option value="">Select a program</option>
                         <option value="fellowship">Research Fellowship (6 months)</option>
                         <option value="lab">Research Lab (ongoing)</option>
@@ -220,12 +224,12 @@ export default function CTA() {
                         <span className="mr-2 text-ink-dim">04</span>
                         Research interest
                       </label>
-                      <select id="focus" required className="field">
+                      <select id="focus" name="focus" required className="field">
                         <option value="">Select your focus area</option>
-                        <option value="agents">AI Agents</option>
-                        <option value="architectures">Alternative Neural Architectures</option>
-                        <option value="quantum">Quantum AI</option>
-                        <option value="experimental">Experimental AI</option>
+                        <option value="interpretability">Mechanistic Interpretability</option>
+                        <option value="reasoning">Reasoning &amp; Chain-of-Thought</option>
+                        <option value="adaptation">Parameter-Efficient Adaptation</option>
+                        <option value="open">Open Empirical Practice</option>
                       </select>
                     </div>
 
@@ -236,12 +240,14 @@ export default function CTA() {
                       </label>
                       <textarea
                         id="about"
+                        name="about"
                         rows={4}
                         required
                         placeholder="Your background, what excites you about AI research, and what you hope to explore…"
                         className="field resize-none"
                       />
                     </div>
+
 
                     <div className="flex flex-col gap-4 pt-7 sm:flex-row sm:items-center sm:justify-between">
                       <p className="sig text-ink-dim">

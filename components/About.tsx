@@ -5,24 +5,24 @@ import AnimatedCounter from "./AnimatedCounter";
 
 // One lead figure + three supporting — asymmetric, not the 4-equal metric grid
 const leadStat = {
-  end: 95,
-  suffix: "%",
-  label: "Publication Rate",
-  description: "of fellows leave with peer-reviewed work",
+  end: 2,
+  suffix: "",
+  label: "Papers in Progress",
+  description: "drafted in the open, with code and data released alongside",
   serial: "a.04",
 };
 
 const supportingStats = [
-  { end: 200, suffix: "+", label: "Papers",   description: "In peer-reviewed venues",    serial: "a.01" },
-  { end: 50,  suffix: "+", label: "Mentors",  description: "From leading institutions",  serial: "a.02" },
-  { end: 15,  suffix: "+", label: "Domains",  description: "Across experimental AI",     serial: "a.03" },
+  { end: 4,   suffix: "",  label: "Research Tracks", description: "From interpretability to adaptation",  serial: "a.01" },
+  { end: 100, suffix: "%", label: "Open Source",     description: "Code, data, and notebooks released",   serial: "a.02" },
+  { end: 1,   suffix: "",  label: "Founding Year",   description: "Building the lab from scratch in 2026", serial: "a.03" },
 ];
 
 const focus = [
-  { title: "Agent-First",     tone: "var(--cat-agents)",        desc: "AI that reasons, plans, and acts. Multi-agent systems and long-horizon autonomy." },
-  { title: "Beyond LLMs",     tone: "var(--cat-architectures)", desc: "Architectures the mainstream hasn't imagined yet — liquid nets, SSMs, neuromorphic substrates." },
-  { title: "Quantum-Ready",   tone: "var(--cat-quantum)",       desc: "Preparing for the quantum advantage in machine learning: QML, variational circuits, hybrids." },
-  { title: "Research Rigor",  tone: "var(--cat-experimental)",  desc: "Every project is held to peer-review standards. Results over demos. Papers over posts." },
+  { title: "Mechanistic Interpretability", tone: "var(--cat-agents)",        desc: "Causal interventions, activation analysis, and circuit-level methods. We try to figure out what models actually do — not what they appear to do." },
+  { title: "Reasoning & Chain-of-Thought", tone: "var(--cat-architectures)", desc: "Step-level analysis of how language models reason, and whether the trace they write is causally responsible for the answer they give." },
+  { title: "Parameter-Efficient Adaptation", tone: "var(--cat-quantum)",     desc: "Low-rank methods, subspace adaptation, and principled rank allocation — adapting large pretrained models without retraining them from scratch." },
+  { title: "Open by Default",              tone: "var(--cat-experimental)",  desc: "Code, datasets, and analysis notebooks released alongside the paper. Honest reporting of negative results, not just headlines." },
 ];
 
 export default function About() {
@@ -82,24 +82,21 @@ export default function About() {
             </ScrollReveal>
             <ScrollReveal delay={0.08}>
               <h2 className="display text-[clamp(1.3rem,2.2vw,1.85rem)] text-ink">
-                Research beyond the ordinary.
+                A new lab, starting honest.
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={0.16}>
               <p className="mt-6 max-w-[42ch] text-[15px] leading-[1.75] text-ink-2">
-                Praxor Lab exists at the intersection of curiosity and rigor.
-                We are a research collective dedicated to pushing the
-                boundaries of what AI can become — not just refining what it
-                already is.
+                Praxor Lab is in its first year. We are a small group studying
+                the internals of large language models — how they reason, and
+                how they adapt to new tasks — and writing it up as we go.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.24}>
               <p className="mt-4 max-w-[42ch] text-[15px] leading-[1.75] text-ink-muted">
-                Our researchers don&apos;t just study existing models. They
-                architect new paradigms — from bio-inspired neural networks to
-                quantum-enhanced learning systems. Every fellow leaves with a
-                published paper and a transformed understanding of what&apos;s
-                possible.
+                Two papers are in draft. We&apos;re building the lab around
+                the kind of research we want to read: open code, careful
+                interventions, claims sized to evidence.
               </p>
             </ScrollReveal>
           </div>

@@ -6,8 +6,8 @@ import Logo from "./Logo";
 
 const navLinks = [
   { label: "Research", href: "#research" },
-  { label: "Products", href: "#products" },
-  { label: "Programs", href: "#programs" },
+  { label: "Applied Work", href: "#products" },
+  { label: "Join the Lab", href: "#programs" },
   { label: "Process", href: "#process" },
 ];
 
@@ -62,7 +62,7 @@ export default function Navbar() {
                 <span className="ml-1 text-ink-muted font-normal">Lab</span>
               </span>
               <span className="sig ml-3 hidden border-l border-rule-subtle pl-3 text-ink-dim lg:inline">
-                Est. 2024
+                Est. 2026
               </span>
             </a>
 
@@ -161,7 +161,7 @@ export default function Navbar() {
                 transition={{ delay: 0.25 }}
                 className="btn-solid mt-8 w-full py-4 text-[15px]"
               >
-                Apply for Cohort 07
+                Apply to join
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

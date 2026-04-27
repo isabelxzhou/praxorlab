@@ -5,55 +5,55 @@ import ScrollReveal from "./ScrollReveal";
 const products = [
   {
     code: "PX-01",
-    tone: "var(--cat-agents)",
-    name: "Custom Agent Training",
+    tone: "var(--cat-quantum)",
+    name: "Custom Adapter Training",
     tagline:
-      "Bespoke autonomous agents for your domain, tools, and workflows.",
+      "Parameter-efficient fine-tuning for your domain, sized to your compute budget.",
     bullets: [
-      "Tool-use, planning, and long-horizon reasoning",
-      "Integration with your data and internal APIs",
-      "Evaluation harness tailored to your KPIs",
+      "Low-rank adapters with principled rank allocation",
+      "Spectral profiling of your base model",
+      "Released as drop-in checkpoints with eval reports",
     ],
-    meta: "6–12 wks",
+    meta: "6–10 wks",
   },
   {
     code: "PX-02",
-    tone: "var(--cat-architectures)",
-    name: "RLHF & Instruction Tuning",
+    tone: "var(--cat-agents)",
+    name: "Reasoning Model Audit",
     tagline:
-      "Preference alignment and instruction following at production scale.",
+      "Mechanistic analysis of how a reasoning model is actually arriving at its answers.",
     bullets: [
-      "Reward modeling from human or AI preference",
-      "DPO, IPO, and KTO pipelines; PPO when it earns its place",
-      "Safety and refusal calibration",
+      "Step-level causal interventions on chain-of-thought",
+      "Faithfulness measurements across your eval set",
+      "Failure-mode breakdown with reproducible notebooks",
     ],
-    meta: "8–16 wks",
+    meta: "4–8 wks",
   },
   {
     code: "PX-03",
     tone: "var(--cat-experimental)",
-    name: "Evaluation & Red-team",
+    name: "Evaluation & Stress-Test",
     tagline:
-      "Rigorous evals, behavioral testing, and adversarial review.",
+      "Domain-specific evals and adversarial review, not vanity benchmarks.",
     bullets: [
-      "Domain-specific benchmarks and eval suites",
-      "Red-team for jailbreaks, exfiltration, and data leakage",
-      "Regression-testable reports, not demos",
+      "Task-grounded eval suites with regression tracking",
+      "Probing for shortcut learning and confabulation",
+      "Reports that match the evidence behind them",
     ],
     meta: "4–8 wks",
   },
   {
     code: "PX-04",
-    tone: "var(--cat-quantum)",
-    name: "Synthetic Data Pipelines",
+    tone: "var(--cat-architectures)",
+    name: "Research Collaboration",
     tagline:
-      "High-quality synthetic datasets for scarce or sensitive domains.",
+      "Joint work on a focused interpretability or adaptation question, ending in a co-authored draft.",
     bullets: [
-      "Task-specific generation with verification loops",
-      "Deduplication, difficulty curricula, and provenance",
-      "Governance reports and data cards",
+      "Scoped to a single empirical question",
+      "Open code, shared intermediate results",
+      "Aimed at a workshop or conference submission",
     ],
-    meta: "6–10 wks",
+    meta: "3–6 mo",
   },
 ];
 
@@ -80,10 +80,10 @@ export default function Products() {
           </ScrollReveal>
           <ScrollReveal delay={0.06} className="lg:col-span-6 lg:col-start-7">
             <p className="max-w-[58ch] text-[15px] leading-[1.75] text-ink-muted">
-              The fellowship is our upstream research track. For teams that
-              need production-grade AI delivered on a timeline, we offer a
-              small set of engagements drawn directly from the lab&apos;s
-              methods.
+              Most of what we do is research. For teams that need the same
+              methods applied to a specific model or product, we take on a
+              small number of engagements per quarter — built around the
+              interpretability and adaptation work the lab is already doing.
             </p>
           </ScrollReveal>
         </div>

@@ -21,17 +21,17 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Praxor Lab — Experimental AI Research",
+  title: "Praxor Lab — LLM Interpretability & Adaptation Research",
   description:
-    "A research residency working on autonomous agents, alternative neural architectures, and quantum AI. Fellowship, mentorship, and publication support for researchers working at the frontier.",
+    "A new independent research lab studying the internals of large language models — mechanistic interpretability, chain-of-thought faithfulness, and parameter-efficient adaptation. Two papers currently in draft. Cohort 01 applications open.",
   keywords: [
-    "AI research",
-    "AI agents",
-    "quantum AI",
-    "neural architectures",
-    "research fellowship",
-    "AI mentorship",
-    "experimental AI",
+    "LLM research",
+    "mechanistic interpretability",
+    "chain-of-thought faithfulness",
+    "parameter-efficient fine-tuning",
+    "low-rank adaptation",
+    "AI research fellowship",
+    "reasoning models",
   ],
   icons: {
     icon: [
@@ -42,17 +42,17 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Praxor Lab — Experimental AI Research",
+    title: "Praxor Lab — LLM Interpretability & Adaptation Research",
     description:
-      "A research residency working on autonomous agents, alternative neural architectures, and quantum AI.",
+      "A new independent research lab studying mechanistic interpretability, chain-of-thought faithfulness, and parameter-efficient adaptation.",
     type: "website",
     siteName: "Praxor Lab",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Praxor Lab — Experimental AI Research",
+    title: "Praxor Lab — LLM Interpretability & Adaptation Research",
     description:
-      "A research residency working on autonomous agents, alternative neural architectures, and quantum AI.",
+      "A new independent research lab studying mechanistic interpretability, chain-of-thought faithfulness, and parameter-efficient adaptation.",
   },
 };
 

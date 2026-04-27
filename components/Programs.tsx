@@ -20,14 +20,14 @@ const flagship: Program = {
   name: "Research Fellowship",
   duration: "6 Months",
   description:
-    "Our flagship program. Full immersion into experimental AI research with dedicated mentorship, lab resources, and publication support.",
+    "The first cohort. Work alongside the founding team on one of the two papers in active draft, or scope a related question of your own. Small group, close collaboration, public output.",
   features: [
-    "1-on-1 mentor matching with domain experts",
-    "Full access to compute resources & infrastructure",
-    "Weekly research seminars & peer review",
-    "Publication support & conference prep",
-    "Stipend for full-time fellows",
-    "Alumni network & ongoing collaboration",
+    "Direct collaboration with the founding researchers",
+    "Co-authorship on the paper you contribute to",
+    "Compute and infrastructure provided",
+    "Weekly working sessions and informal review",
+    "Modest stipend for full-time fellows",
+    "Code, data, and analysis released openly",
   ],
   cta: "Apply for Fellowship",
   href: "#apply",
@@ -37,31 +37,31 @@ const satellites: Program[] = [
   {
     featured: false,
     code: "P-02",
-    name: "Research Lab",
-    duration: "Ongoing",
+    name: "Visiting Collaborator",
+    duration: "Flexible",
     description:
-      "Our in-house research arm. Original research across experimental AI, published in peer-reviewed venues.",
+      "For researchers with their own ongoing work who want to contribute to a specific draft on a lighter time commitment.",
     features: [
-      "Original research in agents, quantum AI & beyond",
-      "Open-source frameworks & tooling",
-      "Regular submissions to top venues",
+      "Co-authorship on a single paper or section",
+      "Remote-friendly, project-scoped",
+      "Lab compute available for the collaboration",
     ],
-    cta: "View Research",
-    href: "#research",
+    cta: "Get in touch",
+    href: "#apply",
   },
   {
     featured: false,
     code: "P-03",
-    name: "Open Labs",
+    name: "Reading Group",
     duration: "Ongoing",
     description:
-      "Community-driven workshops, reading groups, and experimental sessions. Open to anyone curious.",
+      "An open reading group on interpretability and adaptation. For anyone who wants to follow along and discuss the work.",
     features: [
-      "Weekly workshops on emerging topics",
-      "Guest lectures from leading researchers",
-      "Community Discord & resource library",
+      "Weekly paper discussions",
+      "Open invitation to comment on our drafts",
+      "Discord for ongoing conversation",
     ],
-    cta: "Join Community",
+    cta: "Join the group",
     href: "#apply",
   },
 ];
@@ -106,7 +106,7 @@ export default function Programs() {
           <div className="mb-10 flex items-center gap-3">
             <span className="sig text-signal">§04</span>
             <span className="h-px flex-1 bg-rule-subtle" />
-            <span className="label-mono">Programs</span>
+            <span className="label-mono">Join the Lab</span>
           </div>
         </ScrollReveal>
 
@@ -114,14 +114,13 @@ export default function Programs() {
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 className="display text-[clamp(1.3rem,2.2vw,1.85rem)] text-ink">
-                Your path into AI research.
+                Three ways to engage with the lab.
               </h2>
             </div>
             <p className="max-w-[52ch] text-[15px] leading-[1.75] text-ink-muted lg:col-span-6 lg:col-start-7">
-              Whether you&apos;re diving deep into a six-month fellowship or
-              exploring through our open labs, there&apos;s a program sized to
-              your ambition. Every track is built around one premise: the work
-              gets published.
+              We&apos;re a new lab in our first year, with two papers in active
+              draft and room for a small group of collaborators. Pick the level
+              of involvement that fits where you are.
             </p>
           </div>
         </ScrollReveal>
@@ -163,7 +162,7 @@ export default function Programs() {
                   </div>
                   <div>
                     <dt className="sig text-ink-dim">Cohort</dt>
-                    <dd className="mt-1 text-[14px] text-ink">07 · 2026</dd>
+                    <dd className="mt-1 text-[14px] text-ink">01 · 2026</dd>
                   </div>
                 </dl>
               </header>

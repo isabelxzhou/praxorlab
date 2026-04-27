@@ -14,10 +14,10 @@ export default function ConsoleGreeting() {
       "background: #1a1814; color: #f0b850; font-weight: 600; font-family: ui-monospace, monospace; padding: 4px 8px; border: 1px solid #f0b850;",
     ];
     const body = [
-      "%cExperimental AI research. Opening the console?" +
+      "%cA new lab studying the internals of large language models. Opening the console?" +
         "\nWe read résumés: research@praxor.lab" +
-        "\nTracks: agents · alternative architectures · quantum AI · experimental." +
-        "\nCohort 07 is open.",
+        "\nTracks: interpretability · reasoning · efficient adaptation · open practice." +
+        "\nYear one. Two papers currently in draft. First fellows wanted.",
       "color: #b8b3a4; font-family: ui-monospace, monospace; line-height: 1.6;",
     ];
 

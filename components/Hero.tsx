@@ -8,8 +8,8 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const index = [
   { n: "§02", label: "Research", href: "#research" },
-  { n: "§03", label: "Products", href: "#products" },
-  { n: "§04", label: "Programs", href: "#programs" },
+  { n: "§03", label: "Applied Work", href: "#products" },
+  { n: "§04", label: "Join the Lab", href: "#programs" },
   { n: "§06", label: "Apply", href: "#apply" },
 ];
 
@@ -42,15 +42,15 @@ export default function Hero() {
           className="flex flex-wrap items-end justify-between gap-4 pt-10 pb-8 border-b border-rule-subtle"
         >
           <div className="flex items-baseline gap-4 sm:gap-6">
-            <span className="sig">Vol. VII</span>
-            <span className="sig hidden sm:inline">N° 07 · Spring</span>
+            <span className="sig">Vol. I</span>
+            <span className="sig hidden sm:inline">N° 01 · Spring</span>
             <LiveTimestamp className="hidden lg:inline text-ink-dim" />
           </div>
           <div className="flex items-center gap-2.5">
             <span className="status-dot" aria-hidden="true" />
             <span className="label-mono text-[11px]">
-              <span className="hidden sm:inline">Applications Open · </span>
-              Cohort 07
+              <span className="hidden sm:inline">Lab Active · </span>
+              Year One
             </span>
           </div>
         </motion.div>
@@ -64,9 +64,9 @@ export default function Hero() {
             className="max-w-[26ch]"
           >
             <h1 className="hero-headline text-[clamp(1.75rem,3.6vw,3.25rem)] text-ink">
-              Experimental AI research,{" "}
+              A new lab, working on{" "}
               <span className="text-ink-2">
-                held to paper-grade rigor.
+                what makes large models tick.
               </span>
             </h1>
           </motion.div>
@@ -78,11 +78,10 @@ export default function Hero() {
             className="mt-12 grid gap-10 md:grid-cols-12"
           >
             <p className="md:col-span-6 md:col-start-7 max-w-[62ch] text-[15px] leading-[1.7] text-ink-2">
-              Praxor Lab is a residency for researchers working at the edge of
-              what AI can become — autonomous agents, alternative neural
-              architectures, and quantum machine learning. Every fellow leaves
-              with a peer-reviewed paper and a transformed understanding of the
-              field.
+              Praxor Lab is a new independent research lab studying the
+              internals of large language models — how they reason, and how
+              they adapt. Two papers in draft, in the open. Looking for
+              collaborators.
             </p>
           </motion.div>
 
@@ -93,7 +92,7 @@ export default function Hero() {
             className="mt-12 flex flex-wrap items-center gap-3"
           >
             <a href="#apply" className="btn-solid px-6 py-3 text-[14px]">
-              Apply for Cohort 07
+              Apply to join
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

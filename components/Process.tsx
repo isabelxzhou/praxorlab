@@ -7,25 +7,25 @@ const steps = [
     number: "01",
     title: "Apply",
     description:
-      "Submit your application with your background, research interests, and what excites you about experimental AI. No prior publications required — we value curiosity and drive above all.",
+      "Tell us your background and what draws you to interpretability or adaptation. No prior publications required — we look for care about the question and willingness to do real empirical work.",
   },
   {
     number: "02",
-    title: "Match",
+    title: "Scope",
     description:
-      "Our team pairs you with a mentor whose expertise aligns with your interests. You'll co-design your research trajectory and set milestones together.",
+      "We sit down with accepted fellows and pick something to work on — usually a contribution to a draft, sometimes a related question of your own.",
   },
   {
     number: "03",
     title: "Research",
     description:
-      "Dive deep into your project with full lab resources, compute infrastructure, weekly seminars, and close mentorship. Collaborate with your cohort on breakthrough ideas.",
+      "Six months of focused work. Compute provided, weekly working sessions, intermediate results in the open from day one.",
   },
   {
     number: "04",
     title: "Publish",
     description:
-      "Refine your work through peer review, prepare your paper for submission, and present your findings. Our team helps you target the right venues and conferences.",
+      "We draft together, share early for outside review, and submit to a workshop or conference. The artifact is the paper plus the code, data, and notebooks needed to reproduce it.",
   },
 ];
 
@@ -45,13 +45,12 @@ export default function Process() {
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 className="display text-[clamp(1.3rem,2.2vw,1.85rem)] text-ink">
-                From curiosity to publication.
+                How research runs at the lab.
               </h2>
             </div>
             <p className="lg:col-span-6 lg:col-start-7 max-w-[52ch] text-[15px] leading-[1.75] text-ink-muted">
-              A clear path from application to published research, with
-              dedicated support at every step of the journey. Four phases,
-              roughly six months.
+              The lab works in small, scoped projects rather than open-ended
+              programs. Four phases over roughly six months.
             </p>
           </div>
         </ScrollReveal>

@@ -6,12 +6,12 @@ import ScrollReveal from "./ScrollReveal";
 const areas = [
   {
     code: "R-01",
-    title: "AI Agents",
+    title: "Mechanistic Interpretability",
     tone: "var(--cat-agents)",
     toneTint: "var(--cat-agents-tint)",
     description:
-      "Autonomous systems that reason, plan, and act. We research multi-agent architectures, tool-using agents, agent-to-agent protocols, and emergent swarm behaviors that push far beyond simple chatbots.",
-    tags: ["Multi-Agent Systems", "Tool Use", "Autonomy", "Swarm Intelligence"],
+      "Probing the internal computations of large language models. Causal interventions, activation analysis, and circuit-level methods to understand which parts of a model are actually doing the work.",
+    tags: ["Causal Intervention", "Activation Patching", "Circuit Analysis", "Probing"],
     glyph: (
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1" className="h-8 w-8">
         <circle cx="20" cy="20" r="2.5" />
@@ -42,12 +42,12 @@ const areas = [
   },
   {
     code: "R-02",
-    title: "Alternative Neural Architectures",
+    title: "Reasoning & Chain-of-Thought",
     tone: "var(--cat-architectures)",
     toneTint: "var(--cat-architectures-tint)",
     description:
-      "The transformer isn't the end of the story. We explore liquid neural networks, state-space models, spiking neural nets, neuromorphic computing, and entirely novel computational substrates for intelligence.",
-    tags: ["Liquid Networks", "SSMs", "Neuromorphic", "Spiking NNs"],
+      "How language models reason step by step, and whether the written trace is causally responsible for the answer. We compare prompted and trained reasoners and measure step-level effects.",
+    tags: ["CoT Faithfulness", "RL-Trained Reasoners", "Step-Level Causality", "Trace Analysis"],
     glyph: (
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1" className="h-8 w-8">
         <motion.path
@@ -66,12 +66,12 @@ const areas = [
   },
   {
     code: "R-03",
-    title: "Quantum AI",
+    title: "Parameter-Efficient Adaptation",
     tone: "var(--cat-quantum)",
     toneTint: "var(--cat-quantum-tint)",
     description:
-      "Harnessing quantum computation for machine learning. We investigate quantum neural networks, variational quantum circuits, quantum advantage in optimization, and hybrid quantum-classical architectures.",
-    tags: ["QML", "Variational Circuits", "Hybrid Systems", "Quantum Advantage"],
+      "Adapting large pretrained models to downstream tasks without retraining from scratch. Low-rank decompositions, subspace methods, and rank allocation guided by the model's own spectrum.",
+    tags: ["Low-Rank Adaptation", "Subspace Methods", "Spectral Analysis", "Rank Allocation"],
     glyph: (
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1" className="h-8 w-8">
         <circle cx="20" cy="20" r="4" />
@@ -92,12 +92,12 @@ const areas = [
   },
   {
     code: "R-04",
-    title: "Experimental AI",
+    title: "Open Empirical Practice",
     tone: "var(--cat-experimental)",
     toneTint: "var(--cat-experimental-tint)",
     description:
-      "The frontier of what nobody else is trying. Novel training paradigms, emergent capability research, cross-domain transfer, AI safety experiments, and unconventional approaches to artificial general intelligence.",
-    tags: ["Emergence", "Novel Training", "AGI Research", "AI Safety"],
+      "Reproducible experiments, released code, and claims sized to evidence. Negative results count. Ablations are load-bearing.",
+    tags: ["Open Code", "Reproducibility", "Ablation Studies", "Honest Reporting"],
     glyph: (
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1" className="h-8 w-8">
         <rect x="10" y="10" width="20" height="20" />
@@ -127,13 +127,13 @@ export default function ResearchAreas() {
         <div className="grid gap-12 lg:grid-cols-12">
           <ScrollReveal className="lg:col-span-7" delay={0.08}>
             <h2 className="display text-[clamp(1.3rem,2.2vw,1.85rem)] text-ink">
-              What we explore.
+              What we&apos;re working on.
             </h2>
             <p className="mt-6 max-w-[62ch] text-[15px] leading-[1.75] text-ink-muted">
-              Our research spans the most ambitious frontiers of AI — the
-              spaces where conventional wisdom ends and real discovery
-              begins. Each track is led by a working researcher and scoped
-              to a publishable output.
+              Two papers are in active development — one on the internals of
+              reasoning models, one on parameter-efficient adaptation. The
+              tracks below are the directions those papers grow into. Each is
+              meant to produce a small, verifiable result, not a manifesto.
             </p>
           </ScrollReveal>
         </div>

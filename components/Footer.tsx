@@ -20,20 +20,20 @@ export default function Footer() {
               </span>
             </a>
             <p className="mt-6 max-w-xs text-[13px] leading-[1.75] text-ink-muted">
-              A research residency for experimental AI. Agents, alternative
-              architectures, quantum machine learning. Published work, not
-              demos.
+              A new independent research lab. We study the internals of large
+              language models — how they reason, and how they adapt — and
+              publish openly.
             </p>
             <div className="mt-8 flex items-center gap-2">
               <span className="status-dot" aria-hidden="true" />
-              <span className="sig text-ink-muted">Applications open · Cohort 07</span>
+              <span className="sig text-ink-muted">Lab active · Year One</span>
             </div>
           </div>
 
           <div className="md:col-span-2 md:col-start-6">
             <h4 className="label-mono mb-5">Research</h4>
             <ul className="flex flex-col gap-3">
-              {["AI Agents", "Neural Architectures", "Quantum AI", "Experimental AI", "Publications"].map(
+              {["Interpretability", "Reasoning & CoT", "Efficient Adaptation", "Open Practice", "Drafts in Progress"].map(
                 (item) => (
                   <li key={item}>
                     <a
@@ -51,7 +51,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <h4 className="label-mono mb-5">Programs</h4>
             <ul className="flex flex-col gap-3">
-              {["Fellowship", "Accelerator", "Open Labs", "Mentorship", "Apply"].map(
+              {["Fellowship", "Visiting Collaborator", "Reading Group", "Apply", "Contact"].map(
                 (item) => (
                   <li key={item}>
                     <a
@@ -95,7 +95,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Praxor Lab
             </p>
             <p className="sig hidden text-ink-dim sm:block">
-              Vol. VII · Spring 2026
+              Vol. I · Spring 2026
             </p>
           </div>
           <div className="flex items-center gap-6">
