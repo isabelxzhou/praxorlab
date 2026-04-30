@@ -41,7 +41,7 @@ export default function CTA() {
       <div className="mx-auto max-w-[min(1400px,94vw)] px-6 py-28 lg:px-10 lg:py-40">
         <ScrollReveal>
           <div className="flex items-center gap-3 mb-12">
-            <span className="sig text-signal">§06</span>
+            <span className="sig text-signal">§07</span>
             <span className="h-px flex-1 bg-rule-subtle" />
             <span className="label-mono">Application</span>
           </div>
@@ -57,9 +57,10 @@ export default function CTA() {
             </ScrollReveal>
             <ScrollReveal delay={0.08}>
               <p className="mt-8 max-w-[48ch] text-[15px] leading-[1.75] text-ink-2">
-                We&apos;re looking for our first fellows. Students, engineers,
-                and self-directed researchers are all welcome — what we need
-                most is people who care about getting the empirical work right.
+                We&apos;re looking for fellows and collaborators. Students,
+                engineers, and self-directed researchers are all welcome. What
+                we need most is people who care about getting the empirical
+                work right.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.16}>

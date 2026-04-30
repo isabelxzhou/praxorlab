@@ -20,17 +20,17 @@ export default function Footer() {
               </span>
             </a>
             <p className="mt-6 max-w-xs text-[13px] leading-[1.75] text-ink-muted">
-              A new independent research lab. We study the internals of large
-              language models — how they reason, and how they adapt — and
-              publish openly.
+              An independent research lab studying the internals of large
+              language models. How they reason, how they adapt, and how
+              reinforcement learning rewires them.
             </p>
             <div className="mt-8 flex items-center gap-2">
               <span className="status-dot" aria-hidden="true" />
-              <span className="sig text-ink-muted">Lab active · Year One</span>
+              <span className="sig text-ink-muted">Lab active · Loop in alpha</span>
             </div>
           </div>
 
-          <div className="md:col-span-2 md:col-start-6">
+          <div className="md:col-span-2 md:col-start-5">
             <h4 className="label-mono mb-5">Research</h4>
             <ul className="flex flex-col gap-3">
               {["Interpretability", "Reasoning & CoT", "Efficient Adaptation", "Open Practice", "Drafts in Progress"].map(
@@ -45,6 +45,28 @@ export default function Footer() {
                   </li>
                 )
               )}
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <h4 className="label-mono mb-5">Loop · Product</h4>
+            <ul className="flex flex-col gap-3">
+              {[
+                { label: "Training API", href: "#loop" },
+                { label: "Datasets", href: "#loop" },
+                { label: "Environments", href: "#loop" },
+                { label: "Interp on by default", href: "#loop" },
+                { label: "Request alpha access", href: "#apply" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className="text-[13px] text-ink-2 transition-colors hover:text-ink"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -95,7 +117,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Praxor Lab
             </p>
             <p className="sig hidden text-ink-dim sm:block">
-              Vol. I · Spring 2026
+              Independent research · Open code
             </p>
           </div>
           <div className="flex items-center gap-6">

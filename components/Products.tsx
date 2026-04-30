@@ -66,7 +66,7 @@ export default function Products() {
       <div className="mx-auto max-w-[min(1400px,94vw)] px-6 py-20 lg:px-10 lg:py-28">
         <ScrollReveal>
           <div className="flex items-center gap-3 mb-10">
-            <span className="sig text-signal">§03</span>
+            <span className="sig text-signal">§04</span>
             <span className="h-px flex-1 bg-rule-subtle" />
             <span className="label-mono">Products & Services</span>
           </div>
@@ -82,7 +82,7 @@ export default function Products() {
             <p className="max-w-[58ch] text-[15px] leading-[1.75] text-ink-muted">
               Most of what we do is research. For teams that need the same
               methods applied to a specific model or product, we take on a
-              small number of engagements per quarter — built around the
+              small number of engagements per quarter, built around the
               interpretability and adaptation work the lab is already doing.
             </p>
           </ScrollReveal>

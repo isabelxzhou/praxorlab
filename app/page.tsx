@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import About from "@/components/About";
 import ResearchAreas from "@/components/ResearchAreas";
+import Loop from "@/components/Loop";
 import Products from "@/components/Products";
 import Programs from "@/components/Programs";
 import Process from "@/components/Process";
@@ -21,6 +22,7 @@ export default function Home() {
       <Marquee />
       <About />
       <ResearchAreas />
+      <Loop />
       <Products />
       <Programs />
       <Process />

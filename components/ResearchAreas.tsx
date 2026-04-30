@@ -130,7 +130,7 @@ export default function ResearchAreas() {
               What we&apos;re working on.
             </h2>
             <p className="mt-6 max-w-[62ch] text-[15px] leading-[1.75] text-ink-muted">
-              Two papers are in active development — one on the internals of
+              Two papers in active development. One on the internals of
               reasoning models, one on parameter-efficient adaptation. The
               tracks below are the directions those papers grow into. Each is
               meant to produce a small, verifiable result, not a manifesto.

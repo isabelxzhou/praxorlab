@@ -21,17 +21,19 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Praxor Lab — LLM Interpretability & Adaptation Research",
+  title: "Praxor Lab — LLM Interpretability, Adaptation, and RL Training Infrastructure",
   description:
-    "A new independent research lab studying the internals of large language models — mechanistic interpretability, chain-of-thought faithfulness, and parameter-efficient adaptation. Two papers currently in draft. Cohort 01 applications open.",
+    "An independent research lab on the internals of large language models. Mechanistic interpretability, chain-of-thought faithfulness, parameter-efficient adaptation, and Loop: RL training infrastructure with mech interp on by default. Papers in the open. Loop in private alpha.",
   keywords: [
     "LLM research",
     "mechanistic interpretability",
     "chain-of-thought faithfulness",
     "parameter-efficient fine-tuning",
     "low-rank adaptation",
-    "AI research fellowship",
+    "RL post-training",
+    "RLHF infrastructure",
     "reasoning models",
+    "AI research fellowship",
   ],
   icons: {
     icon: [
@@ -42,17 +44,17 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Praxor Lab — LLM Interpretability & Adaptation Research",
+    title: "Praxor Lab — LLM Interpretability, Adaptation, and RL Training Infrastructure",
     description:
-      "A new independent research lab studying mechanistic interpretability, chain-of-thought faithfulness, and parameter-efficient adaptation.",
+      "Independent research on mechanistic interpretability, chain-of-thought faithfulness, parameter-efficient adaptation, and RL post-training. Loop in private alpha.",
     type: "website",
     siteName: "Praxor Lab",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Praxor Lab — LLM Interpretability & Adaptation Research",
+    title: "Praxor Lab — LLM Interpretability, Adaptation, and RL Training Infrastructure",
     description:
-      "A new independent research lab studying mechanistic interpretability, chain-of-thought faithfulness, and parameter-efficient adaptation.",
+      "Independent research on mechanistic interpretability, chain-of-thought faithfulness, parameter-efficient adaptation, and RL post-training. Loop in private alpha.",
   },
 };
 

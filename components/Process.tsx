@@ -7,13 +7,13 @@ const steps = [
     number: "01",
     title: "Apply",
     description:
-      "Tell us your background and what draws you to interpretability or adaptation. No prior publications required — we look for care about the question and willingness to do real empirical work.",
+      "Tell us your background and what draws you to interpretability or adaptation. No prior publications required. We look for care about the question and willingness to do real empirical work.",
   },
   {
     number: "02",
     title: "Scope",
     description:
-      "We sit down with accepted fellows and pick something to work on — usually a contribution to a draft, sometimes a related question of your own.",
+      "We sit down with accepted fellows and pick something to work on. Usually a contribution to a draft, sometimes a related question of your own.",
   },
   {
     number: "03",
@@ -35,7 +35,7 @@ export default function Process() {
       <div className="mx-auto max-w-[min(1400px,94vw)] px-6 py-20 lg:px-10 lg:py-28">
         <ScrollReveal>
           <div className="flex items-center gap-3 mb-12">
-            <span className="sig text-signal">§05</span>
+            <span className="sig text-signal">§06</span>
             <span className="h-px flex-1 bg-rule-subtle" />
             <span className="label-mono">Process</span>
           </div>

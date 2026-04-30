@@ -8,9 +8,10 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const index = [
   { n: "§02", label: "Research", href: "#research" },
-  { n: "§03", label: "Applied Work", href: "#products" },
-  { n: "§04", label: "Join the Lab", href: "#programs" },
-  { n: "§06", label: "Apply", href: "#apply" },
+  { n: "§03", label: "Loop · Product", href: "#loop" },
+  { n: "§04", label: "Applied Work", href: "#products" },
+  { n: "§05", label: "Join the Lab", href: "#programs" },
+  { n: "§07", label: "Apply", href: "#apply" },
 ];
 
 export default function Hero() {
@@ -42,15 +43,15 @@ export default function Hero() {
           className="flex flex-wrap items-end justify-between gap-4 pt-10 pb-8 border-b border-rule-subtle"
         >
           <div className="flex items-baseline gap-4 sm:gap-6">
-            <span className="sig">Vol. I</span>
-            <span className="sig hidden sm:inline">N° 01 · Spring</span>
+            <span className="sig">Praxor Lab</span>
+            <span className="sig hidden sm:inline">Independent research</span>
             <LiveTimestamp className="hidden lg:inline text-ink-dim" />
           </div>
           <div className="flex items-center gap-2.5">
             <span className="status-dot" aria-hidden="true" />
             <span className="label-mono text-[11px]">
               <span className="hidden sm:inline">Lab Active · </span>
-              Year One
+              Mech Interp / RL
             </span>
           </div>
         </motion.div>
@@ -64,7 +65,7 @@ export default function Hero() {
             className="max-w-[26ch]"
           >
             <h1 className="hero-headline text-[clamp(1.75rem,3.6vw,3.25rem)] text-ink">
-              A new lab, working on{" "}
+              We work on{" "}
               <span className="text-ink-2">
                 what makes large models tick.
               </span>
@@ -78,10 +79,10 @@ export default function Hero() {
             className="mt-12 grid gap-10 md:grid-cols-12"
           >
             <p className="md:col-span-6 md:col-start-7 max-w-[62ch] text-[15px] leading-[1.7] text-ink-2">
-              Praxor Lab is a new independent research lab studying the
-              internals of large language models — how they reason, and how
-              they adapt. Two papers in draft, in the open. Looking for
-              collaborators.
+              An independent research lab studying the internals of large
+              language models: how they reason, how they adapt, and how
+              reinforcement learning rewires them. Papers in the open. Loop, in
+              alpha. Looking for collaborators.
             </p>
           </motion.div>
 

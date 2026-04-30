@@ -20,9 +20,9 @@ const flagship: Program = {
   name: "Research Fellowship",
   duration: "6 Months",
   description:
-    "The first cohort. Work alongside the founding team on one of the two papers in active draft, or scope a related question of your own. Small group, close collaboration, public output.",
+    "Work alongside Praxor researchers on one of the papers in active draft, or scope a related question of your own. Small group, close collaboration, public output.",
   features: [
-    "Direct collaboration with the founding researchers",
+    "Direct collaboration with the research team",
     "Co-authorship on the paper you contribute to",
     "Compute and infrastructure provided",
     "Weekly working sessions and informal review",
@@ -104,7 +104,7 @@ export default function Programs() {
       <div className="mx-auto max-w-[min(1400px,94vw)] px-6 py-24 lg:px-10 lg:py-32">
         <ScrollReveal>
           <div className="mb-10 flex items-center gap-3">
-            <span className="sig text-signal">§04</span>
+            <span className="sig text-signal">§05</span>
             <span className="h-px flex-1 bg-rule-subtle" />
             <span className="label-mono">Join the Lab</span>
           </div>
@@ -118,9 +118,9 @@ export default function Programs() {
               </h2>
             </div>
             <p className="max-w-[52ch] text-[15px] leading-[1.75] text-ink-muted lg:col-span-6 lg:col-start-7">
-              We&apos;re a new lab in our first year, with two papers in active
-              draft and room for a small group of collaborators. Pick the level
-              of involvement that fits where you are.
+              Two papers in active draft, one product in alpha, and room for a
+              small group of collaborators. Pick the level of involvement that
+              fits where you are.
             </p>
           </div>
         </ScrollReveal>

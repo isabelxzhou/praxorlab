@@ -7,6 +7,7 @@ const items: { label: string; tone: string }[] = [
   { label: "Activation Patching",          tone: "var(--cat-agents)" },
   { label: "Low-Rank Adaptation",          tone: "var(--cat-quantum)" },
   { label: "RL-Trained Reasoners",         tone: "var(--cat-architectures)" },
+  { label: "RL Post-Training",             tone: "var(--cat-architectures)" },
   { label: "Subspace Methods",             tone: "var(--cat-quantum)" },
   { label: "Causal Scrubbing",             tone: "var(--cat-agents)" },
   { label: "Spectral Analysis",            tone: "var(--cat-quantum)" },

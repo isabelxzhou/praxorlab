@@ -6,9 +6,9 @@ import Logo from "./Logo";
 
 const navLinks = [
   { label: "Research", href: "#research" },
+  { label: "Loop", href: "#loop" },
   { label: "Applied Work", href: "#products" },
   { label: "Join the Lab", href: "#programs" },
-  { label: "Process", href: "#process" },
 ];
 
 export default function Navbar() {

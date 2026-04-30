@@ -13,15 +13,15 @@ const leadStat = {
 };
 
 const supportingStats = [
-  { end: 4,   suffix: "",  label: "Research Tracks", description: "From interpretability to adaptation",  serial: "a.01" },
+  { end: 4,   suffix: "",  label: "Research Tracks", description: "Interpretability, reasoning, adaptation, RL",  serial: "a.01" },
   { end: 100, suffix: "%", label: "Open Source",     description: "Code, data, and notebooks released",   serial: "a.02" },
-  { end: 1,   suffix: "",  label: "Founding Year",   description: "Building the lab from scratch in 2026", serial: "a.03" },
+  { end: 1,   suffix: "",  label: "Product in Alpha", description: "Loop · RL training infra with interp built in", serial: "a.03" },
 ];
 
 const focus = [
-  { title: "Mechanistic Interpretability", tone: "var(--cat-agents)",        desc: "Causal interventions, activation analysis, and circuit-level methods. We try to figure out what models actually do — not what they appear to do." },
+  { title: "Mechanistic Interpretability", tone: "var(--cat-agents)",        desc: "Causal interventions, activation analysis, and circuit-level methods. We figure out what models actually do, not what they appear to do." },
   { title: "Reasoning & Chain-of-Thought", tone: "var(--cat-architectures)", desc: "Step-level analysis of how language models reason, and whether the trace they write is causally responsible for the answer they give." },
-  { title: "Parameter-Efficient Adaptation", tone: "var(--cat-quantum)",     desc: "Low-rank methods, subspace adaptation, and principled rank allocation — adapting large pretrained models without retraining them from scratch." },
+  { title: "Parameter-Efficient Adaptation", tone: "var(--cat-quantum)",     desc: "Low-rank methods, subspace adaptation, and principled rank allocation. Adapt large pretrained models without retraining from scratch." },
   { title: "Open by Default",              tone: "var(--cat-experimental)",  desc: "Code, datasets, and analysis notebooks released alongside the paper. Honest reporting of negative results, not just headlines." },
 ];
 
@@ -82,21 +82,20 @@ export default function About() {
             </ScrollReveal>
             <ScrollReveal delay={0.08}>
               <h2 className="display text-[clamp(1.3rem,2.2vw,1.85rem)] text-ink">
-                A new lab, starting honest.
+                Independent research, in the open.
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={0.16}>
               <p className="mt-6 max-w-[42ch] text-[15px] leading-[1.75] text-ink-2">
-                Praxor Lab is in its first year. We are a small group studying
-                the internals of large language models — how they reason, and
-                how they adapt to new tasks — and writing it up as we go.
+                Praxor Lab studies the internals of large language models. How
+                they reason, how they adapt, and how reinforcement learning
+                rewires them. We write it up in the open.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.24}>
               <p className="mt-4 max-w-[42ch] text-[15px] leading-[1.75] text-ink-muted">
-                Two papers are in draft. We&apos;re building the lab around
-                the kind of research we want to read: open code, careful
-                interventions, claims sized to evidence.
+                Two papers in draft. One product in alpha. The work runs on
+                open code, careful interventions, and claims sized to evidence.
               </p>
             </ScrollReveal>
           </div>
